@@ -1,0 +1,62 @@
+{% assign dev = site.data.devices %}
+{% if dev.items and dev.items.size > 0 %}
+<!-- DEVICES -->
+<section class="devices" id="devices">
+  <div class="section-inner">
+    <div class="devices-header reveal">
+      <div class="section-eyebrow" style="justify-content:center;">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-text">{{ dev.eyebrow }}</span>
+        <div class="eyebrow-line"></div>
+      </div>
+      <h2 class="section-title">{{ dev.title }}</h2>
+      {% if dev.intro and dev.intro != "" %}<p class="devices-intro">{{ dev.intro }}</p>{% endif %}
+    </div>
+
+    <div class="devices-grid reveal reveal-delay-1">
+      {% for item in dev.items %}
+      {% assign live = false %}
+      {% assign s = item.status | downcase %}
+      {% if s contains 'support' or s contains 'available' or s contains 'live' %}{% assign live = true %}{% endif %}
+      <div class="device-card{% if live %} device-live{% endif %}">
+        <div class="device-art">
+          {% case item.type %}
+          {% when 'eeg' %}
+          <svg viewBox="0 0 120 90" aria-hidden="true">
+            <!-- band arc over the reading -->
+            <path class="d-band-body" d="M26 58C26 30 94 30 94 58"/>
+            <!-- electrode contacts on the band -->
+            <circle class="d-node" cx="34" cy="50" r="3"/>
+            <circle class="d-node" cx="86" cy="50" r="3"/>
+            <!-- the signal it reads -->
+            <path class="d-wave" d="M30 68h9l5-13 6 26 5-19 5 10 5-6h30"/>
+          </svg>
+          {% when 'band' %}
+          <svg viewBox="0 0 120 90" aria-hidden="true">
+            <rect class="d-stroke" x="34" y="14" width="52" height="62" rx="20"/>
+            <rect class="d-stroke" x="46" y="30" width="28" height="30" rx="9"/>
+            <path class="d-wave" d="M52 45h4l3-6 4 12 3-6h4"/>
+            <path class="d-stroke" d="M46 14v-6M74 14v-6M46 76v6M74 76v6"/>
+          </svg>
+          {% else %}
+          <svg viewBox="0 0 120 90" aria-hidden="true">
+            <rect class="d-stroke" x="40" y="24" width="40" height="42" rx="12"/>
+            <path class="d-stroke" d="M48 24V12h24v12M48 66v12h24V66"/>
+            <path class="d-stroke" d="M80 38h5a3 3 0 0 1 0 6h-5"/>
+            <path class="d-wave" d="M49 46h5l4-8 5 16 4-8h5"/>
+          </svg>
+          {% endcase %}
+        </div>
+        <div class="device-name">{{ item.name }}</div>
+        {% if item.detail and item.detail != "" %}<div class="device-detail">{{ item.detail }}</div>{% endif %}
+        <span class="device-status">{{ item.status }}</span>
+      </div>
+      {% endfor %}
+    </div>
+
+    {% if dev.note and dev.note != "" %}
+    <p class="devices-note reveal">{{ dev.note }}</p>
+    {% endif %}
+  </div>
+</section>
+{% endif %}

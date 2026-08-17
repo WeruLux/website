@@ -1,0 +1,27 @@
+# Technology section feature list. `dot: gold` switches the bullet color.
+features:
+  - title: EEG-Driven Sleep Stage Detection
+    text: >-
+      Wearable EEG sensors classify sleep stages in real-time enabling
+      interventions precisely timed to circadian windows, not guesswork.
+  - title: Probabilistic Jet Lag Modeling
+    dot: gold
+    text: >-
+      A proprietary probability model generates risk scores from chronotype,
+      route, departure time, and behavioral history with individual calibration
+      over time.
+  - title: Adaptive Feedback Loop
+    text: >-
+      The system continuously adapts to your responses, making each subsequent
+      journey more effective than the last.
+  - title: Continuous Calibration
+    dot: gold
+    text: >-
+      Recovery is passively monitored through phone metadata inactivity patterns,
+      charging cycles, and accelerometer data, requiring no effort from the
+      traveler while enabling continuous, seamless calibration.
+  - title: Performance Impact
+    text: >-
+      Designed to be meaningfully better at protecting traveler well-being than
+      static, one-size-fits-all alternatives - continuously learning,
+      continuously improving.

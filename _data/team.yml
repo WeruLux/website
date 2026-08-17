@@ -1,0 +1,39 @@
+# Team members, rendered in order (3 per row on desktop).
+# `photo` is a path under /img. `bio` supports HTML line breaks via the | block.
+eyebrow: Our Team
+title: Built by <em>Scientists,</em><br>Engineers, & Dreamers
+advisors_label: Scientific & Strategic Advisors
+members:
+  - name: Louisa Uchikoshi
+    role: Co-Founder & CEO
+    photo: img/Louisa.webp
+    bio: >-
+      Paris-Saclay University · Waseda University, Japan<br>Published researcher
+      (Technological Forecasting and Social Change)
+  - name: Okba Bekhelifi
+    role: Lead BCI Engineer
+    photo: img/okba.webp
+    bio: >-
+      PhD in Intelligent Systems <br> Brain-Computer Interface researcher
+  - name: Sara Hanouti
+    role: Finance Lead
+    photo: img/Sara.webp
+    bio: >-
+      EM Lyon Business School<br>Ex EY France
+  - name: Djihane Torchane
+    role: Full-Stack and AI Engineer
+    photo: img/djihaneee.webp
+    bio: >-
+      State Engineer in Computer Science <br> Quantum AI researcher
+    protect_photo: true
+  - name: Ilyes Bouchada
+    role: Full-Stack Engineer
+    photo: img/Ilyes.webp
+    bio: >-
+      Specialising in virtual reality (VR) and artificial intelligence<br>
+      Based in Tokyo, Japan
+  - name: Nada Nouha Aderghal
+    role: Embedded Systems · BCI
+    photo: img/Nada.webp
+    bio: >-
+      Brain-Computer Interface researcher

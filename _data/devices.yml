@@ -1,0 +1,28 @@
+# Supported / planned hardware. Each device carries its own status label —
+# change a status to "Supported" the day that integration actually ships.
+# `type` picks the illustration: eeg | watch | band  (no brand logos are used).
+eyebrow: Hardware
+title: Designed for the Devices You <em>Already Wear</em>
+intro: >-
+  WeruLux reads what your body is already telling your devices — and works
+  without any of them until you connect one.
+items:
+  - name: Muse S
+    type: eeg
+    detail: EEG headband · sleep staging
+    status: In development
+  - name: Apple Watch
+    type: watch
+    detail: Sleep & activity signals
+    status: In development
+  - name: Whoop
+    type: band
+    detail: Recovery & strain
+    status: Planned
+  - name: Garmin
+    type: watch
+    detail: Sleep & activity signals
+    status: Planned
+note: >-
+  No wearable is required — the core plan works from your itinerary and
+  check-ins alone.

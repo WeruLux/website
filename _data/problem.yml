@@ -1,0 +1,14 @@
+# "The Problem" section copy, including the clock dial and the badge.
+eyebrow: The Problem
+stat: 4.5B+
+stat_label: passengers travel across time zones each year
+statement: >-
+  Yet modern aviation is optimized for <em>operational efficiency</em>, not
+  human physiology.
+detail: >-
+  Existing apps and recommendations are static and one-size-fits-all, with no
+  connection to individual biological variability.
+clock_number: "72"
+clock_label: Hours Lost
+badge_number: 100M+
+badge_label: Premium travelers<br>most impacted

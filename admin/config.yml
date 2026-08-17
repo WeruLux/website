@@ -1,0 +1,318 @@
+# Sveltia CMS configuration.
+# Local editing: open /admin/ while running a local server and choose
+# "Work with Local Repository" (no GitHub needed).
+# Production: set `repo` below to the real GitHub org/repo before deploying.
+backend:
+  name: github
+  repo: WeruLux/lp # UPDATE if the repo lives elsewhere
+  branch: main
+
+media_folder: img
+public_folder: /img
+
+collections:
+  - name: data
+    label: Site Content
+    files:
+      - name: sections
+        label: Section Visibility
+        file: _data/sections.yml
+        fields:
+          - { name: problem, label: "Show: The Problem", widget: boolean }
+          - { name: solution, label: "Show: Our Solution", widget: boolean }
+          - { name: technology, label: "Show: Technology", widget: boolean }
+          - { name: devices, label: "Show: Hardware / Devices", widget: boolean }
+          - { name: calculator, label: "Show: Jet-Lag Calculator (Try It)", widget: boolean }
+          - { name: value, label: "Show: Value Creation", widget: boolean }
+          - { name: faq, label: "Show: FAQ", widget: boolean }
+          - { name: team, label: "Show: Team & Advisors", widget: boolean }
+          - { name: contact, label: "Show: Contact", widget: boolean }
+      - name: team
+        label: Team Members
+        file: _data/team.yml
+        fields:
+          - { name: eyebrow, label: Section eyebrow, widget: string }
+          - { name: title, label: Section title (HTML allowed), widget: string }
+          - { name: advisors_label, label: Advisors sub-heading, widget: string }
+          - name: members
+            label: Members
+            widget: list
+            fields:
+              - { name: name, label: Name, widget: string }
+              - { name: role, label: Role, widget: string }
+              - { name: photo, label: Photo, widget: image }
+              - { name: bio, label: Bio (HTML allowed), widget: text }
+              - { name: protect_photo, label: Protect photo (disable right-click), widget: boolean, required: false }
+      - name: advisors
+        label: Advisors
+        file: _data/advisors.yml
+        fields:
+          - name: advisors
+            label: Advisors
+            widget: list
+            fields:
+              - { name: name, label: Name, widget: string }
+              - { name: title, label: Title, widget: string }
+              - { name: institution, label: Institution, widget: string }
+              - { name: photo, label: Photo, widget: image }
+      - name: stats
+        label: Hero Stats
+        file: _data/stats.yml
+        fields:
+          - name: stats
+            label: Stats
+            widget: list
+            fields:
+              - { name: num, label: Number, widget: string }
+              - { name: accent, label: Accent suffix (B+, hr, ...), widget: string, required: false }
+              - { name: label, label: Label, widget: string }
+      - name: value
+        label: Value Creation Tabs
+        file: _data/value.yml
+        fields:
+          - { name: eyebrow, label: Section eyebrow, widget: string }
+          - { name: title, label: Section title (HTML allowed), widget: string }
+          - name: tabs
+            label: Tabs
+            widget: list
+            fields:
+              - { name: who, label: Audience, widget: string }
+              - { name: image, label: Panel image, widget: image, required: false }
+              - { name: focus, label: "Focal point when narrow (e.g. 63% 45%)", widget: string, required: false }
+              - { name: items, label: "Bullet points (revealed on hover)", widget: list }
+      - name: logos
+        label: Credibility Band (institutions)
+        file: _data/logos.yml
+        fields:
+          - { name: heading, label: Heading, widget: string }
+          - name: items
+            label: "Institutions (band shows when at least one exists)"
+            widget: list
+            fields:
+              - { name: name, label: Name, widget: string }
+              - { name: image, label: "Logo image (optional — text shown if empty)", widget: image, required: false }
+      - name: social
+        label: Social Links (footer)
+        file: _data/social.yml
+        fields:
+          - name: items
+            label: "Profiles (a link with an empty URL is hidden)"
+            widget: list
+            fields:
+              - { name: network, label: Icon, widget: select, options: [linkedin, instagram, facebook, tiktok, x, youtube, whatsapp, other] }
+              - { name: label, label: Name (for screen readers), widget: string }
+              - { name: url, label: Profile URL, widget: string, required: false }
+      - name: waitlist
+        label: Waitlist Signup
+        file: _data/waitlist.yml
+        fields:
+          - { name: endpoint, label: "Form endpoint URL (section + hero button appear when filled)", widget: string, required: false }
+          - { name: headline, label: Headline (HTML em allowed), widget: string }
+          - { name: text, label: Text, widget: text }
+          - { name: button_label, label: Button label, widget: string }
+      - name: announcement
+        label: Announcement Bar
+        file: _data/announcement.yml
+        fields:
+          - { name: text, label: "Text (bar shows when filled, hides when empty)", widget: string, required: false }
+          - { name: link_text, label: Link label, widget: string, required: false }
+          - { name: link_url, label: Link URL, widget: string, required: false }
+      - name: testimonials
+        label: Testimonials
+        file: _data/testimonials.yml
+        fields:
+          - { name: eyebrow, label: Eyebrow, widget: string, required: false }
+          - { name: title, label: Section title (HTML em allowed), widget: string }
+          - name: items
+            label: "Quotes (carousel shows when at least one exists)"
+            widget: list
+            fields:
+              - { name: quote, label: Quote, widget: text }
+              - { name: name, label: Name, widget: string }
+              - { name: role, label: Role, widget: string }
+              - { name: company, label: Company or route, widget: string, required: false }
+              - { name: rating, label: Stars (1-5), widget: number, value_type: int, min: 1, max: 5, default: 5, required: false }
+              - { name: photo, label: Photo (initial shown if empty), widget: image, required: false }
+      - name: phones
+        label: Hero Phone Screenshots
+        file: _data/phones.yml
+        fields:
+          - name: phones
+            label: Screenshots (left, center, right)
+            widget: list
+            fields:
+              - { name: image, label: Screenshot, widget: image }
+              - { name: alt, label: Alt text, widget: string }
+      - name: tech_features
+        label: Technology Features
+        file: _data/tech_features.yml
+        fields:
+          - name: features
+            label: Features
+            widget: list
+            fields:
+              - { name: title, label: Title, widget: string }
+              - { name: dot, label: "Bullet color (leave empty or 'gold')", widget: string, required: false }
+              - { name: text, label: Text, widget: text }
+
+  - name: copy
+    label: Page Copy
+    files:
+      - name: nav
+        label: Header & Navigation
+        file: _data/nav.yml
+        fields:
+          - { name: cta_label, label: Button label, widget: string }
+          - { name: cta_href, label: Button link, widget: string }
+          - name: links
+            label: Menu links
+            widget: list
+            fields:
+              - { name: label, label: Label, widget: string }
+              - { name: href, label: Link, widget: string }
+              - { name: section, label: "Tied to section (solution / technology / value / team — leave empty for always-on links)", widget: string, required: false }
+              # A link with children renders as a dropdown. This field must stay
+              # declared: the CMS rewrites the file with only the fields listed
+              # here, so removing it would drop every dropdown on first save.
+              - name: children
+                label: Dropdown items (leave empty for a plain link)
+                widget: list
+                required: false
+                fields:
+                  - { name: label, label: Label, widget: string }
+                  - { name: href, label: Link, widget: string }
+                  - { name: section, label: "Tied to section (leave empty for always-on links)", widget: string, required: false }
+      - name: hero
+        label: Hero
+        file: _data/hero.yml
+        fields:
+          - { name: eyebrow, label: Eyebrow, widget: string }
+          - { name: title, label: "Headline (HTML: <em> italic accent, <br> line break)", widget: text }
+          - { name: subtitle, label: Subtitle, widget: text }
+          - { name: primary_label, label: Primary button label (used when the waitlist is off), widget: string }
+          - { name: primary_href, label: Primary button link, widget: string }
+          - { name: secondary_label, label: Secondary link label, widget: string }
+          - { name: secondary_href, label: Secondary link href, widget: string }
+      - name: problem
+        label: "Section: The Problem"
+        file: _data/problem.yml
+        fields:
+          - { name: eyebrow, label: Eyebrow, widget: string }
+          - { name: stat, label: Big statistic, widget: string }
+          - { name: stat_label, label: Statistic label, widget: string }
+          - { name: statement, label: Statement (HTML allowed), widget: text }
+          - { name: detail, label: Detail paragraph, widget: text }
+          - { name: clock_number, label: Clock number, widget: string }
+          - { name: clock_label, label: Clock label, widget: string }
+          - { name: badge_number, label: Badge number, widget: string }
+          - { name: badge_label, label: Badge label (HTML allowed), widget: string }
+      - name: solution
+        label: "Section: Our Solution"
+        file: _data/solution.yml
+        fields:
+          - { name: eyebrow, label: Eyebrow, widget: string }
+          - { name: title, label: Title (HTML allowed), widget: string }
+          - { name: intro, label: Intro paragraph, widget: text }
+          - name: pillars
+            label: Pillars (text reveals on hover; icon shown when no image)
+            widget: list
+            fields:
+              - { name: title, label: Title, widget: string }
+              - { name: image, label: Image (optional), widget: image, required: false }
+              - { name: image_light, label: "Image for light mode (optional — dark one is reused if empty)", widget: image, required: false }
+              - { name: text, label: Text (revealed on hover), widget: text }
+      - name: technology
+        label: "Section: Technology"
+        file: _data/technology.yml
+        fields:
+          - { name: eyebrow, label: Eyebrow, widget: string }
+          - { name: title, label: Title (HTML allowed), widget: string }
+          - { name: intro, label: Intro paragraph, widget: text }
+      - name: devices
+        label: "Section: Hardware / Devices"
+        file: _data/devices.yml
+        fields:
+          - { name: eyebrow, label: Eyebrow, widget: string }
+          - { name: title, label: Title (HTML allowed), widget: string }
+          - { name: intro, label: Intro, widget: text, required: false }
+          - name: items
+            label: Devices
+            widget: list
+            fields:
+              - { name: name, label: Device name, widget: string }
+              - { name: type, label: Illustration, widget: select, options: [eeg, watch, band] }
+              - { name: detail, label: What it provides, widget: string, required: false }
+              - { name: status, label: "Status (write \"Supported\" once it actually ships)", widget: string }
+          - { name: note, label: Footnote, widget: text, required: false }
+      - name: calculator
+        label: "Section: Jet-Lag Calculator"
+        file: _data/calculator.yml
+        fields:
+          - { name: eyebrow, label: Eyebrow, widget: string }
+          - { name: title, label: Title (HTML allowed), widget: string }
+          - { name: intro, label: Intro paragraph, widget: text }
+          - { name: cta_label, label: Button label, widget: string }
+          - { name: disclaimer, label: Disclaimer (keep it honest), widget: text }
+      - name: faq
+        label: "Section: FAQ"
+        file: _data/faq.yml
+        fields:
+          - { name: eyebrow, label: Eyebrow, widget: string }
+          - { name: title, label: Title (HTML allowed), widget: string }
+          - name: items
+            label: "Questions (section shows when at least one exists)"
+            widget: list
+            fields:
+              - { name: question, label: Question, widget: string }
+              - { name: answer, label: Answer, widget: text }
+      - name: contact
+        label: "Section: Contact"
+        file: _data/contact.yml
+        fields:
+          - { name: eyebrow, label: Eyebrow, widget: string }
+          - { name: heading, label: Heading (HTML allowed), widget: string }
+          - { name: description, label: Description, widget: text }
+          - { name: button_label, label: Submit button label, widget: string }
+          - { name: confirm_message, label: Success message, widget: string }
+          - { name: fallback_email, label: Fallback email address, widget: string }
+          - { name: subjects, label: Inquiry types (dropdown), widget: list }
+
+  - name: legal
+    label: Legal Pages
+    files:
+      - name: privacy
+        label: Privacy Policy
+        file: privacy.md
+        fields:
+          - { name: title, label: Title, widget: string }
+          - { name: updated, label: Last updated, widget: datetime, format: "YYYY-MM-DD", time_format: false }
+          - { name: layout, widget: hidden, default: page }
+          - { name: eyebrow, widget: hidden, default: Legal }
+          - { name: permalink, widget: hidden, default: /privacy/ }
+          - { name: description, label: Meta description, widget: string }
+          - { name: body, label: Content, widget: markdown }
+      - name: terms
+        label: Terms of Use
+        file: terms.md
+        fields:
+          - { name: title, label: Title, widget: string }
+          - { name: updated, label: Last updated, widget: datetime, format: "YYYY-MM-DD", time_format: false }
+          - { name: layout, widget: hidden, default: page }
+          - { name: eyebrow, widget: hidden, default: Legal }
+          - { name: permalink, widget: hidden, default: /terms/ }
+          - { name: description, label: Meta description, widget: string }
+          - { name: body, label: Content, widget: markdown }
+
+  - name: blog
+    label: Blog Posts
+    folder: _posts
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: date, label: Date, widget: datetime }
+      - { name: author, label: Author, widget: string, required: false }
+      - { name: cover, label: Cover image, widget: image, required: false }
+      - { name: description, label: "SEO description (~150 chars, shown in Google results)", widget: string, required: false }
+      - { name: layout, label: Layout, widget: hidden, default: post }
+      - { name: body, label: Body, widget: markdown }

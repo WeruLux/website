@@ -1,0 +1,78 @@
+{% assign navd = site.data.nav %}
+<!-- NAV OVERLAY -->
+<div class="nav-overlay" id="navOverlay"></div>
+
+<!-- MOBILE DRAWER -->
+<nav class="nav-drawer" id="navDrawer" aria-label="Mobile navigation">
+  <button class="nav-drawer-close" id="navDrawerClose" aria-label="Close menu">
+    <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <ul class="nav-drawer-links">
+    {% for link in navd.links %}
+      {% if link.children and link.children.size > 0 %}
+        {% assign shown = 0 %}
+        {% for child in link.children %}{% if child.section == "" or site.data.sections[child.section] %}{% assign shown = shown | plus: 1 %}{% endif %}{% endfor %}
+        {% if shown > 0 %}
+        <li class="nav-drawer-group">
+          <details class="nav-drawer-details">
+            <summary class="nav-drawer-summary">
+              <span>{{ link.label }}</span>
+              <svg class="nav-drawer-caret" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5L6 6.5L11 1.5"/></svg>
+            </summary>
+            <ul class="nav-drawer-sub">
+              {% for child in link.children %}
+                {% if child.section == "" or site.data.sections[child.section] %}
+                <li><a href="{{ child.href }}" data-close-nav>{{ child.label }}</a></li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </details>
+        </li>
+        {% endif %}
+      {% elsif link.section == "" or site.data.sections[link.section] %}
+        <li><a href="{{ link.href }}" data-close-nav>{{ link.label }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  <a href="{{ navd.cta_href }}" class="nav-drawer-cta" style="color: white;" data-close-nav>{{ navd.cta_label }}</a>
+</nav>
+
+<!-- NAV -->
+<nav>
+  <a href="{{ '/' | relative_url }}" class="nav-logo">
+    <img src="{{ '/img/logo.png' | relative_url }}" alt="WeruLux" class="nav-logo-img">
+  </a>
+  <ul class="nav-links">
+    {% for link in navd.links %}
+      {% if link.children and link.children.size > 0 %}
+        {% assign shown = 0 %}
+        {% for child in link.children %}{% if child.section == "" or site.data.sections[child.section] %}{% assign shown = shown | plus: 1 %}{% endif %}{% endfor %}
+        {% if shown > 0 %}
+        <li class="nav-has-menu">
+          <a href="{{ link.href }}" class="nav-menu-trigger" aria-haspopup="true">
+            {{ link.label }}
+            <svg class="nav-caret" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5L6 6.5L11 1.5"/></svg>
+          </a>
+          <ul class="nav-menu">
+            {% for child in link.children %}
+              {% if child.section == "" or site.data.sections[child.section] %}
+              <li><a href="{{ child.href }}">{{ child.label }}</a></li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </li>
+        {% endif %}
+      {% elsif link.section == "" or site.data.sections[link.section] %}
+        <li><a href="{{ link.href }}">{{ link.label }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+  <a href="{{ navd.cta_href }}" class="nav-cta">{{ navd.cta_label }}</a>
+  <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode">
+    <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+  </button>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>

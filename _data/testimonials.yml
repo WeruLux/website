@@ -1,0 +1,35 @@
+# Placeholder quotes for design preview — replace with real, attributable
+# testimonials (with permission) before launch.
+eyebrow: Testimonials
+title: What Travelers <em>Say</em>
+items:
+  - quote: I fly Tokyo to Frankfurt twice a month. The plan told me when to sleep, when to get light, and when to stop drinking coffee — the first trip in years where I could think straight on day one.
+    name: Sample quote
+    role: Management consultant
+    company: Long-haul weekly
+    rating: 5
+    photo: ''
+  - quote: What convinced me was that it adapted. My second trip's plan looked nothing like the first because it had learned how I actually recover.
+    name: Sample quote
+    role: Startup founder
+    company: Tokyo ↔ San Francisco
+    rating: 5
+    photo: ''
+  - quote: Our executives lose two productive days after every long-haul flight. A measurable reduction in that window is a straightforward business case.
+    name: Sample quote
+    role: Head of corporate travel
+    company: B2B evaluation
+    rating: 5
+    photo: ''
+  - quote: The pre-flight questions took three minutes and the schedule it produced was specific — actual hours, not the usual "try to sleep on the plane".
+    name: Sample quote
+    role: Frequent business traveler
+    company: Dubai ↔ London
+    rating: 4
+    photo: ''
+  - quote: I arrived in Sydney and trained the next morning instead of writing the day off. That difference is the entire product for me.
+    name: Sample quote
+    role: Performance athlete
+    company: Competing internationally
+    rating: 5
+    photo: ''

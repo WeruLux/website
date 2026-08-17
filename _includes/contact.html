@@ -1,0 +1,66 @@
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact-inner">
+
+    <!-- Left: info -->
+    <div class="contact-left reveal">
+      <div class="section-eyebrow">
+        <div class="eyebrow-line"></div>
+        <div class="eyebrow-text">{{ site.data.contact.eyebrow }}</div> <br/>
+      </div>
+      <h2 class="contact-heading">{{ site.data.contact.heading }}</h2>
+      <p class="contact-desc">{{ site.data.contact.description }}</p>
+    </div>
+
+    <!-- Right: form -->
+    <div class="contact-form reveal reveal-delay-1" id="contactForm">
+
+      <div class="contact-form-row">
+        <div class="form-field">
+          <label for="cf-name">Full Name</label>
+          <input type="text" id="cf-name" placeholder="Your name">
+        </div>
+        <div class="form-field">
+          <label for="cf-org">Organization</label>
+          <input type="text" id="cf-org" placeholder="Company / Institution">
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label for="cf-email">Email Address</label>
+        <input type="email" id="cf-email" placeholder="you@organization.com">
+      </div>
+
+      <div class="form-field">
+        <label for="cf-subject">Subject</label>
+        <select id="cf-subject">
+          <option value="" disabled selected>Select an inquiry type</option>
+          {% for subject in site.data.contact.subjects %}
+          <option value="{{ subject }}">{{ subject }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="form-field">
+        <label for="cf-message">Message</label>
+        <textarea id="cf-message" rows="6" placeholder="Tell us about your project or interest…"></textarea>
+      </div>
+
+      {% comment %} Honeypot: invisible to humans, bots fill it and get discarded {% endcomment %}
+      <div class="cf-hp" aria-hidden="true">
+        <label for="cf-gotcha">Leave this field empty</label>
+        <input type="text" id="cf-gotcha" name="_gotcha" tabindex="-1" autocomplete="off">
+      </div>
+
+      <button class="contact-submit" id="cfSubmit" type="button">
+        <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        {{ site.data.contact.button_label }}
+      </button>
+
+      <div class="contact-confirm" id="cfConfirm">{{ site.data.contact.confirm_message }}</div>
+      <div class="contact-error" id="cfError">Something went wrong and your message was not sent. Please try again, or email us directly at <a href="mailto:contact@werulux.com">contact@werulux.com</a>.</div>
+      <p class="contact-fallback">Prefer email? Reach us at <a href="mailto:{{ site.data.contact.fallback_email }}">{{ site.data.contact.fallback_email }}</a></p>
+    </div>
+
+  </div>
+</section>

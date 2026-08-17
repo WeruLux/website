@@ -1,0 +1,24 @@
+eyebrow: Value Creation
+title: What <em>Changes</em>
+tabs:
+  - who: Passengers
+    focus: "63% 45%"
+    image: img/value/passengers.webp
+    items:
+      - Reduced jet lag and measurably improved in-flight sleep quality.
+      - Seamless, hyper-personalized travel experience from departure to destination.
+      - 'Faster post-flight cognitive recovery: Arrive ready to perform!'
+  - who: Airlines
+    focus: "58% 50%"
+    image: img/value/airlines.webp
+    items:
+      - Differentiated premium cabin experience through biometric personalization.
+      - Increased loyalty and satisfaction among highest-value customers.
+      - New revenue layer extending airline services beyond the flight itself.
+  - who: Corporations
+    focus: "38% 50%"
+    image: img/value/corporations.webp
+    items:
+      - Improved employee well-being and resilience during frequent international travel.
+      - Faster recovery drives higher post-trip productivity, creating measurable ROI.
+      - Potential reduction in travel-related health risks and associated insurance costs.

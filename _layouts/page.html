@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<article class="blog-post">
+  <div class="blog-post-inner">
+    <header class="blog-post-header reveal">
+      <div class="section-eyebrow">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-text">{{ page.eyebrow | default: "WeruLux" }}</span>
+      </div>
+      <h1 class="blog-post-title">{{ page.title }}</h1>
+      {% if page.updated %}
+      <div class="blog-post-meta">Last updated: {{ page.updated | date: "%B %-d, %Y" }}</div>
+      {% endif %}
+    </header>
+
+    <div class="blog-post-content reveal reveal-delay-1">
+      {{ content }}
+    </div>
+  </div>
+</article>

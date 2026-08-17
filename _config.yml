@@ -1,0 +1,23 @@
+title: WeruLux — AI Jet Lag & Travel Wellness Co-Pilot
+description: >-
+  WeruLux is the AI travel wellness co-pilot that reads your biology to beat jet
+  lag, with personalized sleep, light and recovery plans for every flight.
+url: "https://werulux.com"
+
+# Jekyll build settings
+markdown: kramdown
+permalink: /blog/:year/:month/:day/:title/
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+feed:
+  path: blog/feed.xml
+
+exclude:
+  - README.md
+  - _backup
+  - vendor
+  - Gemfile
+  - Gemfile.lock

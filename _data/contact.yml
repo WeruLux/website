@@ -1,0 +1,17 @@
+# Contact section copy. The inquiry-type dropdown options are editable too.
+eyebrow: Get In Touch
+heading: Let's Shape the <em>Future of Travel.</em>
+description: >-
+  We collaborate with forward-thinking airlines, corporations, and research
+  institutions to redefine the travel experience. Whether you're interested in
+  a strategic partnership, investment opportunity, or research collaboration,
+  we'd love to connect.
+button_label: Send Message
+confirm_message: ✦ Your message has been sent! we'll be in touch shortly.
+fallback_email: contact@werulux.com
+subjects:
+  - Partnership - Airline / Corporate
+  - Research Collaboration
+  - Investment Inquiry
+  - Press & Media
+  - General Inquiry

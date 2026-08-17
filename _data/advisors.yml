@@ -1,0 +1,20 @@
+# Scientific & strategic advisors.
+advisors:
+  - name: Dr. Renske Lok
+    title: Circadian Physiologist
+    institution: >-
+      Former Postdoctoral Fellow at Stanford University's Center for Sleep
+      Sciences and Medicine
+    photo: img/Renske.webp
+  - name: Confidential Scientific Advisor
+    title: Leading Circadian Physiologist & Tenured Professor
+    institution: Top-Tier American Research University
+    photo: img/Pranonym.webp
+  - name: Abdelkader Belkacem, PhD
+    title: Director, Cognitive AI Robotics Lab
+    institution: Tokyo Institute of Technology · Osaka University
+    photo: img/abdelkader.webp
+  - name: Guillaume Hansali
+    title: Entrepreneur & University President
+    institution: Tokyo, Japan
+    photo: img/Guillaume.webp

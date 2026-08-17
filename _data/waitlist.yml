@@ -1,0 +1,9 @@
+# Waitlist signup. The section (and the "Join the Waitlist" hero button)
+# appear automatically once `endpoint` is set to the email service's form URL
+# (MailerLite / Brevo). Leave endpoint empty to hide everything.
+endpoint: "https://231cdbf0.sibforms.com/serve/MUIFAOjuSdTAbhWYkPaeA1ZztK0kpZvw0adQoU9acdEhVCiD-urYd5f_sEPoOI0VJKOmQ-NY43sIoFb_21fF6CB8stMyjf9dr1j_DZfMVmFwSIKZQGAy9wKBKfB8WyHPHs__0d1pi9scDO2VfmdMC8UdqJYKMfMjno0CnKt0NEVThSzVCTnSvEEjHeKK-gXCemzH7asyr_wsGtHSLQ=="
+headline: Be First to <em>Fly Well</em>
+text: >-
+  Join the waitlist for priority access to WeruLux — and arrive ready to
+  perform.
+button_label: Join the Waitlist

@@ -1,0 +1,39 @@
+---
+layout: default
+title: Journal — WeruLux
+description: "The WeruLux Journal: circadian science, jet lag research, in-flight recovery and the technology behind biologically personalized travel."
+---
+<section class="blog-index">
+  <div class="blog-index-inner">
+    <header class="blog-index-header reveal">
+      <div class="section-eyebrow">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-text">WeruLux Journal</span>
+      </div>
+      <h1 class="section-title">Notes on <em>Biological Time</em></h1>
+      <p class="blog-index-sub">Circadian science, travel wellness, and the technology behind WeruLux.</p>
+    </header>
+
+    {% if site.posts.size > 0 %}
+    <div class="blog-list">
+      {% for post in site.posts %}
+      <a class="blog-card reveal{% if post.cover %} blog-card-has-thumb{% endif %}" href="{{ post.url | relative_url }}">
+        <div class="blog-card-body">
+          <time class="blog-card-date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %-d, %Y" }}</time>
+          <h2 class="blog-card-title">{{ post.title }}</h2>
+          <p class="blog-card-excerpt">{{ post.excerpt | strip_html | truncate: 180 }}</p>
+          <span class="blog-card-more">Read article →</span>
+        </div>
+        {% if post.cover %}
+        <div class="blog-card-thumb">
+          <img src="{{ post.cover | relative_url }}" alt="" loading="lazy">
+        </div>
+        {% endif %}
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p class="blog-empty reveal">First articles are on their way. <a href="/#contact">Get in touch</a> in the meantime.</p>
+    {% endif %}
+  </div>
+</section>

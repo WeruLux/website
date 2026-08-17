@@ -1,0 +1,38 @@
+---
+layout: default
+permalink: /team/
+title: Team & Scientific Advisors | WeruLux
+description: The circadian researchers, BCI engineers and scientific advisors building WeruLux, from Waseda, Paris-Saclay, Tokyo Tech, EM Lyon and Stanford.
+---
+{% include page-header.html
+   eyebrow="Our Team"
+   title="Built by <em>Scientists,</em><br>Engineers, &amp; Dreamers"
+   intro="A team of circadian researchers, brain-computer interface engineers and operators, supported by advisors from sleep medicine and aviation." %}
+
+{% include team.html hide_header=true %}
+{% include contact.html %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "WeruLux",
+  "url": "{{ site.url }}",
+  "employee": [
+    {% for m in site.data.team.members %}{
+      "@type": "Person",
+      "name": {{ m.name | jsonify }},
+      "jobTitle": {{ m.role | jsonify }},
+      "image": "{{ m.photo | absolute_url }}"
+    }{% unless forloop.last %},{% endunless %}{% endfor %}
+  ],
+  "member": [
+    {% for a in site.data.advisors.advisors %}{
+      "@type": "Person",
+      "name": {{ a.name | jsonify }},
+      "jobTitle": {{ a.title | jsonify }},
+      "affiliation": {{ a.institution | strip_html | normalize_whitespace | jsonify }}
+    }{% unless forloop.last %},{% endunless %}{% endfor %}
+  ]
+}
+</script>

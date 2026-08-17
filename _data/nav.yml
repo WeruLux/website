@@ -1,0 +1,39 @@
+# Header / navigation. A link with `children` becomes a dropdown.
+# `section` ties an entry to a Section Visibility toggle — leave it empty for
+# links that are always shown. A dropdown hides itself when all of its
+# children are hidden.
+cta_label: Contact Us
+cta_href: "/#contact"
+links:
+  - label: Platform
+    href: "/#hero"
+    section: ""
+    children:
+      - label: Our Solution
+        href: "/#solution"
+        section: solution
+      - label: Technology
+        href: "/technology/"
+        section: technology
+      - label: Hardware
+        href: "/technology/#devices"
+        section: devices
+      - label: Jet-Lag Calculator
+        href: "/#calculator"
+        section: calculator
+  - label: Company
+    href: "/team/"
+    section: ""
+    children:
+      - label: Value Creation
+        href: "/#value"
+        section: value
+      - label: Team & Advisors
+        href: "/team/"
+        section: team
+      - label: FAQ
+        href: "/faq/"
+        section: faq
+  - label: Journal
+    href: "/blog/"
+    section: ""

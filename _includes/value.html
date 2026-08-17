@@ -1,0 +1,48 @@
+{% assign val = site.data.value %}
+<!-- VALUE CREATION -->
+<section class="value" id="value">
+  <div class="section-inner">
+    <div class="value-header reveal">
+      <div class="section-eyebrow" style="justify-content:center;">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-text">{{ val.eyebrow }}</span>
+        <div class="eyebrow-line"></div>
+      </div>
+      <h2 class="section-title">{{ val.title }}</h2>
+    </div>
+
+    <div class="value-accordion reveal reveal-delay-1">
+      {% for tab in val.tabs %}
+      {% assign slot = forloop.index0 | modulo: 3 %}
+      <article class="va-panel" data-slot="{{ slot }}" tabindex="0">
+        <div class="va-media">
+          {% if tab.image and tab.image != "" %}
+          <img src="{{ tab.image | relative_url }}" alt="{{ tab.who }}" loading="lazy"{% if tab.focus and tab.focus != "" %} style="object-position: {{ tab.focus }};"{% endif %}>
+          {% endif %}
+        </div>
+        <div class="va-scrim"></div>
+        <span class="va-toggle" aria-hidden="true">+</span>
+
+        <div class="va-body">
+          <div class="va-label">
+            <span class="va-for">For</span>
+            <h3 class="va-who">{{ tab.who }}</h3>
+          </div>
+          <div class="va-reveal">
+            <div class="va-reveal-inner">
+              <ul class="va-items">
+                {% for item in tab.items %}
+                <li class="va-item">
+                  <svg class="va-check" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5"/></svg>
+                  <span>{{ item }}</span>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>

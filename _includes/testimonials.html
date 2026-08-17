@@ -1,0 +1,55 @@
+{% assign tst = site.data.testimonials %}
+{% if tst.items and tst.items.size > 0 %}
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-inner">
+    <div class="testimonials-header reveal">
+      <div class="section-eyebrow" style="justify-content:center;">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-text">{{ tst.eyebrow | default: "Testimonials" }}</span>
+        <div class="eyebrow-line"></div>
+      </div>
+      <h2 class="section-title">{{ tst.title }}</h2>
+    </div>
+
+    <div class="tst-carousel reveal reveal-delay-1" id="tstCarousel">
+      <div class="tst-viewport">
+        <div class="tst-track" id="tstTrack">
+          {% for t in tst.items %}
+          <figure class="tst-card" data-index="{{ forloop.index0 }}" tabindex="0">
+            {% assign stars = t.rating | default: 5 %}
+            <div class="tst-stars" aria-label="{{ stars }} out of 5">
+              {% for i in (1..5) %}<span class="tst-star{% if i > stars %} tst-star-off{% endif %}">&#9733;</span>{% endfor %}
+            </div>
+            <blockquote class="tst-quote">{{ t.quote }}</blockquote>
+            <figcaption class="tst-who">
+              {% if t.photo and t.photo != "" %}
+              <img class="tst-avatar" src="{{ t.photo | relative_url }}" alt="{{ t.name }}" loading="lazy">
+              {% else %}
+              <span class="tst-avatar tst-avatar-initial" aria-hidden="true">{{ t.name | slice: 0, 1 }}</span>
+              {% endif %}
+              <span class="tst-who-text">
+                <span class="tst-name">{{ t.name }}</span>
+                <span class="tst-role">{{ t.role }}{% if t.company and t.company != "" %} · {{ t.company }}{% endif %}</span>
+              </span>
+            </figcaption>
+          </figure>
+          {% endfor %}
+        </div>
+      </div>
+
+      {% if tst.items.size > 1 %}
+      <div class="tst-controls">
+        <button type="button" class="tst-arrow" id="tstPrev" aria-label="Previous testimonial">&#8249;</button>
+        <div class="tst-dots" id="tstDots">
+          {% for t in tst.items %}
+          <button type="button" class="tst-dot{% if forloop.first %} tst-dot-active{% endif %}" data-index="{{ forloop.index0 }}" aria-label="Testimonial {{ forloop.index }}"></button>
+          {% endfor %}
+        </div>
+        <button type="button" class="tst-arrow" id="tstNext" aria-label="Next testimonial">&#8250;</button>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endif %}

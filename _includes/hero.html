@@ -1,0 +1,81 @@
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-circle"></div>
+
+  <!-- 3D PLANE ANIMATION -->
+  <div class="plane-stage">
+    <div class="plane-world">
+
+      <!-- Primary large plane -->
+      <div class="plane-wrap" id="plane1">
+        <!-- contrails -->
+        <div style="position:absolute; bottom:-2px; right:48%; transform:translateX(50%);">
+          <div class="contrail"></div>
+          <div class="contrail contrail-2"></div>
+        </div>
+        <!-- engine glow -->
+        <div class="plane-glow"></div>
+        <img src="{{ '/img/plane.webp' | relative_url }}" alt="Commercial airplane" style="width:100%;image-rendering:high-quality;filter:drop-shadow(0 6px 24px rgba(194,49,82,0.45)) drop-shadow(0 0 12px rgba(255,255,255,0.18)) drop-shadow(0 2px 6px rgba(0,0,0,0.5)) brightness(0.95) contrast(1.08) saturate(0.9);">
+      </div>
+
+      <!-- Secondary smaller plane (delayed loop) -->
+      <div class="plane-wrap-2" id="plane2">
+        <img src="{{ '/img/plane.webp' | relative_url }}" alt="Commercial airplane" style="width:100%;image-rendering:high-quality;opacity:0.4;filter:drop-shadow(0 2px 12px rgba(201,169,110,0.25)) brightness(0.88) contrast(1.05) saturate(0.85);">
+      </div>
+
+    </div>
+  </div>
+
+  <div class="hero-main">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-line"></div>
+        <span class="hero-eyebrow-text">{{ site.data.hero.eyebrow }}</span>
+      </div>
+      <h1 class="hero-title">{{ site.data.hero.title }}</h1>
+      <p class="hero-sub">{{ site.data.hero.subtitle }}</p>
+      <div class="hero-actions">
+        {% if site.data.waitlist.endpoint and site.data.waitlist.endpoint != "" %}
+        <a href="#waitlist" class="btn-primary" style="color: white;">{{ site.data.waitlist.button_label }}</a>
+        {% else %}
+        <a href="{{ site.data.hero.primary_href }}" class="btn-primary" style="color: white;">{{ site.data.hero.primary_label }}</a>
+        {% endif %}
+        <a href="{{ site.data.hero.secondary_href }}" class="btn-ghost">{{ site.data.hero.secondary_label }}</a>
+      </div>
+    </div>
+
+    <!-- PHONE GALLERY -->
+    <div class="hero-phones">
+      <div class="phone-gallery" id="phoneGallery">
+        {% for phone in site.data.phones.phones %}
+        {% assign pos = "phone-right" %}
+        {% if forloop.index == 1 %}{% assign pos = "phone-left" %}{% endif %}
+        {% if forloop.index == 2 %}{% assign pos = "phone-center" %}{% endif %}
+        <div class="phone-phone {{ pos }}" role="button" tabindex="0" aria-label="View {{ phone.alt }}"{% if forloop.index == 2 %} aria-current="true"{% endif %}>
+          <div class="phone-mockup-inner">
+            <span class="phone-placeholder">WeruLux</span>
+            <img class="phone-screen-image" src="{{ phone.image | relative_url }}" alt="{{ phone.alt }}" loading="lazy" onerror="this.remove()">
+            <div class="phone-notch"></div>
+          </div>
+        </div>
+        {% endfor %}
+        <div class="phone-dots" id="phoneDots">
+          {% for phone in site.data.phones.phones %}
+          <span class="phone-dot{% if forloop.index == 2 %} phone-dot-active{% endif %}"></span>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-stats">
+    {% for stat in site.data.stats.stats %}
+    <div class="stat-item">
+      <div class="stat-num">{{ stat.num }}{% if stat.accent != "" %}<span>{{ stat.accent }}</span>{% endif %}</div>
+      <div class="stat-label">{{ stat.label }}</div>
+    </div>
+    {% endfor %}
+  </div>
+</section>

@@ -1,0 +1,18 @@
+{% assign lg = site.data.logos %}
+{% if lg.items and lg.items.size > 0 %}
+<!-- CREDIBILITY BAND -->
+<section class="cred-band" aria-label="Institutions">
+  <div class="cred-inner">
+    <span class="cred-heading">{{ lg.heading }}</span>
+    <div class="cred-items">
+      {% for item in lg.items %}
+      {% if item.image and item.image != "" %}
+      <img class="cred-logo" src="{{ item.image | relative_url }}" alt="{{ item.name }}" loading="lazy">
+      {% else %}
+      <span class="cred-wordmark">{{ item.name }}</span>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}

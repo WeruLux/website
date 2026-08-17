@@ -1,0 +1,13 @@
+---
+layout: default
+---
+{% assign sec = site.data.sections %}
+{% include hero.html %}
+{% include logos.html %}
+{% if sec.problem %}{% include problem.html %}{% endif %}
+{% if sec.solution %}{% include solution.html %}{% endif %}
+{% if sec.calculator %}{% include jetlag.html %}{% endif %}
+{% if sec.value %}{% include value.html %}{% endif %}
+{% include testimonials.html %}
+{% include waitlist.html %}
+{% if sec.contact %}{% include contact.html %}{% endif %}

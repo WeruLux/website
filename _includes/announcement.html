@@ -1,0 +1,9 @@
+{% assign ann = site.data.announcement %}
+{% if ann.text and ann.text != "" %}
+<div class="announcement-bar">
+  <span class="announcement-text">{{ ann.text }}</span>
+  {% if ann.link_url != "" and ann.link_text != "" %}
+  <a class="announcement-link" href="{{ ann.link_url }}">{{ ann.link_text }} →</a>
+  {% endif %}
+</div>
+{% endif %}

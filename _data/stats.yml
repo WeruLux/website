@@ -1,0 +1,14 @@
+# Hero stats row. `num` is the big figure, `accent` is the colored suffix.
+stats:
+  - num: "4.5"
+    accent: "B+"
+    label: "Air passengers / year"
+  - num: "100"
+    accent: "M+"
+    label: "Premium travelers affected"
+  - num: "72"
+    accent: "hr"
+    label: "Average jet lag recovery time"
+  - num: "0"
+    accent: ""
+    label: "Personalized solutions today"

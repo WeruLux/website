@@ -1,0 +1,45 @@
+<!-- TEAM -->
+<section class="team" id="team">
+  <div class="section-inner">
+{% unless include.hide_header %}
+    <div class="team-header reveal">
+      <div class="section-eyebrow">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-text">{{ site.data.team.eyebrow }}</span>
+      </div>
+      <h2 class="section-title">{{ site.data.team.title }}</h2>
+    </div>
+{% endunless %}
+
+    <div class="team-grid">
+      {% for member in site.data.team.members %}
+      {% assign delay = forloop.index0 | modulo: 3 %}
+      <div class="team-card reveal{% if delay == 1 %} reveal-delay-1{% elsif delay == 2 %} reveal-delay-2{% endif %}">
+        <div class="team-card-inner">
+          <div class="team-avatar" style="overflow:hidden;background:none;border:2px solid rgba(194,49,82,0.25);">
+            <img src="{{ member.photo | relative_url }}" alt="{{ member.name }}" style="width:100%;height:100%;object-fit:cover;object-position:center top;"{% if member.protect_photo %} draggable="false" oncontextmenu="return false;" ondragstart="return false;" onmousedown="return false;"{% endif %}>
+          </div>
+          <div class="team-name">{{ member.name }}</div>
+          <div class="team-role">{{ member.role }}</div>
+          <div class="team-school">{{ member.bio }}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="advisors-label reveal">{{ site.data.team.advisors_label }}</div>
+
+    <div class="advisors-grid reveal">
+      {% for advisor in site.data.advisors.advisors %}
+      <div class="advisor-card">
+        <div class="advisor-photo">
+          <img src="{{ advisor.photo | relative_url }}" alt="{{ advisor.name }}" style="width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:center top;border:2px solid rgba(194,49,82,0.2);margin-bottom:0.75rem;display:block;">
+        </div>
+        <div class="advisor-name">{{ advisor.name }}</div>
+        <div class="advisor-title">{{ advisor.title }}</div>
+        <div class="advisor-inst">{{ advisor.institution }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

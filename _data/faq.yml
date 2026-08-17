@@ -1,0 +1,38 @@
+# FAQ section. Appears when at least one question exists; hides when empty.
+# Also emits FAQPage structured data so answers can surface in Google.
+eyebrow: Questions
+title: Frequently <em>Asked</em>
+items:
+  - question: What exactly is jet lag, in scientific terms?
+    answer: >-
+      Jet lag is a misalignment between your internal circadian clock and local
+      time at your destination. Your body keeps running on departure time —
+      driving sleep, alertness, digestion, and hormone release at the wrong
+      hours — until it gradually re-entrains, typically at a rate of about one
+      time zone per day.
+  - question: How is WeruLux different from a sleep or meditation app?
+    answer: >-
+      Generic apps give the same advice to everyone. WeruLux builds a plan
+      around your biology and your specific itinerary — chronotype, recent
+      sleep, route, and direction of travel — and keeps refining it from how you
+      actually respond, before, during, and after each flight.
+  - question: Do I need a wearable or EEG headband to use it?
+    answer: >-
+      No. The core experience works from your questionnaire answers and trip
+      details alone. EEG integration is planned as an optional layer for
+      travelers who want sensor-level precision, and it will always be opt-in.
+  - question: What happens to my health data?
+    answer: >-
+      Data minimization is the design principle: your questionnaire answers and
+      itineraries stay on your device, and only derived scores reach our servers
+      to generate your plan. We do not sell data and use no third-party
+      advertising or tracking. See our privacy policy for the full detail.
+  - question: Who is WeruLux built for?
+    answer: >-
+      Frequent long-haul travelers who need to arrive able to perform —
+      executives, consultants, crew, and athletes — plus the airlines and
+      companies who care about how their travelers land.
+  - question: When can I use it?
+    answer: >-
+      We are onboarding early users in stages. Join the waitlist and you will be
+      among the first invited when access opens in your region.

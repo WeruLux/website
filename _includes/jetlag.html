@@ -1,0 +1,75 @@
+<!-- JET LAG CALCULATOR -->
+<section class="jetlag" id="calculator">
+  <div class="section-inner">
+    <div class="jetlag-header reveal">
+      <div class="section-eyebrow" style="justify-content:center;">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-text">{{ site.data.calculator.eyebrow }}</span>
+        <div class="eyebrow-line"></div>
+      </div>
+      <h2 class="section-title">{{ site.data.calculator.title }}</h2>
+      <p class="jetlag-sub">{{ site.data.calculator.intro }}</p>
+    </div>
+
+    <div class="jetlag-grid reveal reveal-delay-1">
+      <div class="jetlag-controls">
+        <div class="jetlag-field">
+          <label for="jl-from">Departing from</label>
+          <select id="jl-from"></select>
+        </div>
+        <div class="jetlag-swap-wrap">
+          <button type="button" id="jl-swap" class="jetlag-swap" aria-label="Swap cities" title="Swap cities">&#8645;</button>
+        </div>
+        <div class="jetlag-field">
+          <label for="jl-to">Arriving in</label>
+          <select id="jl-to"></select>
+        </div>
+      </div>
+
+      <div class="jetlag-result" id="jl-result" aria-live="polite">
+        <div class="jetlag-dial-wrap">
+          <div class="jetlag-dial">
+            <svg viewBox="0 0 240 240" aria-hidden="true">
+              <defs>
+                <filter id="jl-glow" x="-40%" y="-40%" width="180%" height="180%">
+                  <feGaussianBlur stdDeviation="3" result="b"/>
+                  <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+              <!-- 24h ring of daylight hours, midnight at the top -->
+              <circle class="jl-track" cx="120" cy="120" r="94"/>
+              <!-- night at the destination, 21:00 to 06:00, cut out of the ring -->
+              <path class="jl-night" id="jl-night"/>
+              <g id="jl-ticks"></g>
+              <!-- home city, then destination -->
+              <circle class="jl-marker-halo" id="jl-home-halo" r="8"/>
+              <circle class="jl-marker jl-marker-home" id="jl-home" r="5.5"/>
+              <circle class="jl-marker-halo" id="jl-dest-halo" r="10"/>
+              <circle class="jl-marker jl-marker-dest" id="jl-dest" r="7" filter="url(#jl-glow)"/>
+            </svg>
+            <div class="jetlag-dial-center">
+              <span class="jl-days" id="jl-days">–</span>
+              <span class="jl-days-label" id="jl-days-label">days to recover</span>
+            </div>
+          </div>
+
+          <div class="jl-legend">
+            <span class="jl-leg"><i class="jl-dot jl-dot-home"></i><span id="jl-leg-home">–</span></span>
+            <span class="jl-leg"><i class="jl-dot jl-dot-dest"></i><span id="jl-leg-dest">–</span></span>
+            <span class="jl-leg"><i class="jl-dot jl-dot-day"></i>daylight</span>
+          </div>
+        </div>
+
+        <div class="jetlag-detail">
+          <div class="jl-line"><span class="jl-line-label">Time-zone shift</span><span class="jl-line-val" id="jl-shift">–</span></div>
+          <div class="jl-line"><span class="jl-line-label">Direction</span><span class="jl-line-val" id="jl-direction">–</span></div>
+          <div class="jl-line"><span class="jl-line-label">Body-clock impact</span><span class="jl-line-val" id="jl-impact">–</span></div>
+          <p class="jetlag-note" id="jl-note"></p>
+          <a href="#waitlist" class="btn-primary jetlag-cta" id="jl-cta" style="color:#fff;">{{ site.data.calculator.cta_label }}</a>
+        </div>
+      </div>
+
+      <p class="jetlag-disclaimer">{{ site.data.calculator.disclaimer }}</p>
+    </div>
+  </div>
+</section>

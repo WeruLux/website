@@ -1,0 +1,47 @@
+{% assign prob = site.data.problem %}
+<!-- PROBLEM SECTION -->
+<section class="problem" id="problem">
+  <div class="section-inner">
+    <div class="problem-two-col">
+      <!-- LEFT: text -->
+      <div class="problem-text-col reveal">
+        <div class="section-eyebrow">
+          <div class="eyebrow-line"></div>
+          <span class="eyebrow-text">{{ prob.eyebrow }}</span>
+          <div class="eyebrow-line"></div>
+        </div>
+        <p class="problem-big-stat"><span class="stat-accent">{{ prob.stat }}</span></p>
+        <p class="problem-stat-label">{{ prob.stat_label }}</p>
+        <p class="problem-statement">{{ prob.statement }}</p>
+        <p class="problem-detail">{{ prob.detail }}</p>
+      </div>
+      <!-- RIGHT: visual -->
+      <div class="problem-visual reveal reveal-delay-2">
+        <div class="clock-container">
+          <div class="clock-outer"></div>
+          <div class="clock-mid"></div>
+          <div class="clock-inner">
+            <span class="clock-inner-num">{{ prob.clock_number }}</span>
+            <span class="clock-inner-label">{{ prob.clock_label }}</span>
+          </div>
+          <div class="clock-tick" style="transform: rotate(0deg) translateY(0)"></div>
+          <div class="clock-tick" style="transform: rotate(30deg)"></div>
+          <div class="clock-tick" style="transform: rotate(60deg)"></div>
+          <div class="clock-tick" style="transform: rotate(90deg)"></div>
+          <div class="clock-tick" style="transform: rotate(120deg)"></div>
+          <div class="clock-tick" style="transform: rotate(150deg)"></div>
+          <div class="clock-tick" style="transform: rotate(180deg)"></div>
+          <div class="clock-tick" style="transform: rotate(210deg)"></div>
+          <div class="clock-tick" style="transform: rotate(240deg)"></div>
+          <div class="clock-tick" style="transform: rotate(270deg)"></div>
+          <div class="clock-tick" style="transform: rotate(300deg)"></div>
+          <div class="clock-tick" style="transform: rotate(330deg)"></div>
+        </div>
+        <div class="scale-badge">
+          <div class="scale-num">{{ prob.badge_number }}</div>
+          <div class="scale-label">{{ prob.badge_label }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,96 @@
+<!-- TECHNOLOGY -->
+<section class="tech" id="technology">
+  <div class="section-inner">
+    <div class="tech-grid">
+      <div class="tech-visual reveal">
+        <div class="eeg-display">
+          <div style="position:relative; width:100%;">
+            <div class="eeg-card">
+              <div class="eeg-header">
+                <span class="eeg-label">Neuro-Adaptive Engine · Live</span>
+                <span class="eeg-status"><span class="status-dot"></span>Active · Flight AA287</span>
+              </div>
+
+              <div class="eeg-wave">
+                <div style="font-size:0.6rem; letter-spacing:0.15em; color:var(--smoke); margin-bottom:0.5rem; text-transform:uppercase;">Delta Waves</div>
+                <svg viewBox="0 0 300 60">
+                  <polyline class="eeg-wave-line delta"
+                    points="0,30 20,28 40,10 50,50 60,30 80,32 100,5 115,55 130,28 150,30 170,26 190,8 205,52 220,30 240,31 260,7 278,53 300,30"/>
+                </svg>
+              </div>
+
+              <div class="eeg-wave">
+                <div style="font-size:0.6rem; letter-spacing:0.15em; color:var(--smoke); margin-bottom:0.5rem; text-transform:uppercase;">Theta Waves</div>
+                <svg viewBox="0 0 300 60">
+                  <polyline class="eeg-wave-line theta"
+                    points="0,30 15,20 30,40 45,15 60,45 75,22 90,38 105,18 120,42 135,25 150,35 165,20 180,42 195,18 210,38 225,22 240,45 255,15 270,40 285,20 300,30"/>
+                </svg>
+              </div>
+
+              <div class="eeg-wave">
+                <div style="font-size:0.6rem; letter-spacing:0.15em; color:var(--smoke); margin-bottom:0.5rem; text-transform:uppercase;">Sleep Stage Estimation</div>
+                <svg viewBox="0 0 300 30">
+                  <rect x="0" y="10" width="60" height="10" fill="rgba(194,49,82,0.2)" rx="2"/>
+                  <rect x="62" y="10" width="80" height="10" fill="rgba(194,49,82,0.5)" rx="2"/>
+                  <rect x="144" y="10" width="50" height="10" fill="rgba(201,169,110,0.6)" rx="2"/>
+                  <rect x="196" y="10" width="70" height="10" fill="rgba(194,49,82,0.3)" rx="2"/>
+                  <text x="0" y="8" fill="rgba(138,138,153,0.6)" font-size="7" font-family="monospace">WAKE</text>
+                  <text x="62" y="8" fill="rgba(138,138,153,0.6)" font-size="7" font-family="monospace">LIGHT</text>
+                  <text x="144" y="8" fill="rgba(201,169,110,0.8)" font-size="7" font-family="monospace">DEEP</text>
+                  <text x="196" y="8" fill="rgba(138,138,153,0.6)" font-size="7" font-family="monospace">REM</text>
+                </svg>
+              </div>
+
+              <div class="eeg-metrics">
+                <div class="metric">
+                  <div class="metric-val green">N3</div>
+                  <div class="metric-name">Sleep Stage</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-val gold">61°</div>
+                  <div class="metric-name">Circadian Phase</div>
+                </div>
+                <div class="metric">
+                  <div class="metric-val red">Low</div>
+                  <div class="metric-name">Jet Lag Risk</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="floating-tag top-right">
+              <div class="tag-title">Intervention Active</div>
+              <div class="tag-text">478Hz acoustic · 2700K light</div>
+            </div>
+            <div class="floating-tag bottom-left">
+              <div class="tag-title">Recovery Score</div>
+              <div class="tag-text">87 / 100 · Excellent</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tech-content reveal reveal-delay-2">
+        {% unless include.hide_header %}
+        <div class="section-eyebrow">
+          <div class="eyebrow-line"></div>
+          <span class="eyebrow-text">{{ site.data.technology.eyebrow }}</span>
+        </div>
+        <h2 class="section-title" style="font-size: 2rem;">{{ site.data.technology.title }}</h2>
+        <p>{{ site.data.technology.intro }}</p>
+
+        {% endunless %}
+        <div class="tech-features">
+          {% for feat in site.data.tech_features.features %}
+          <div class="tech-feat">
+            <div class="feat-dot"{% if feat.dot == "gold" %} style="background:var(--gold)"{% endif %}></div>
+            <div class="feat-text">
+              <strong>{{ feat.title }}</strong>
+              {{ feat.text }}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

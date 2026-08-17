@@ -1,0 +1,13 @@
+items:
+  - network: linkedin
+    label: LinkedIn
+    url: https://jp.linkedin.com/company/werulux
+  - network: instagram
+    label: Instagram
+    url: https://instagram.com
+  - network: facebook
+    label: Facebook
+    url: https://facebook.com
+  - network: tiktok
+    label: TikTok
+    url: https://tiktok.com
