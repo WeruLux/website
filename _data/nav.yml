@@ -15,6 +15,9 @@ links:
       - label: Technology
         href: "/technology/"
         section: technology
+      - label: Packages
+        href: "/packages/"
+        section: ""
       - label: Hardware
         href: "/technology/#devices"
         section: devices

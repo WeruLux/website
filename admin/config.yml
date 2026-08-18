@@ -244,6 +244,29 @@ collections:
               - { name: detail, label: What it provides, widget: string, required: false }
               - { name: status, label: "Status (write \"Supported\" once it actually ships)", widget: string }
           - { name: note, label: Footnote, widget: text, required: false }
+      - name: packages
+        label: "Page: Packages"
+        file: _data/packages.yml
+        fields:
+          - { name: eyebrow, label: Eyebrow, widget: string }
+          - { name: title, label: Title (HTML allowed), widget: string }
+          - { name: intro, label: Intro, widget: text, required: false }
+          - name: items
+            label: Packages
+            widget: list
+            fields:
+              - { name: name, label: Package name, widget: string }
+              - { name: hardware, label: Hardware line, widget: string }
+              - { name: hardware_note, label: Hardware detail, widget: string, required: false }
+              - { name: who, label: Who it is for, widget: text, required: false }
+              - { name: features, label: What is included, widget: list, field: { name: item, label: Line, widget: string } }
+              - { name: price, label: "Price (leave empty and no price is shown)", widget: string, required: false }
+              - { name: price_note, label: "Price note (e.g. per month)", widget: string, required: false }
+              - { name: badge, label: "Ribbon (leave empty for none)", widget: string, required: false }
+              - { name: featured, label: Highlight this package, widget: boolean, default: false }
+              - { name: cta_label, label: Button label, widget: string, required: false }
+              - { name: cta_href, label: Button link, widget: string, required: false }
+          - { name: note, label: Footnote, widget: text, required: false }
       - name: calculator
         label: "Section: Jet-Lag Calculator"
         file: _data/calculator.yml
