@@ -4651,7 +4651,9 @@ body:has(.announcement-bar) .nav-drawer { top: 34px; }
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.6rem;
-  align-items: start;
+  /* stretch, not start: every card fills the row, and the flex body inside
+     pushes each CTA to the same baseline */
+  align-items: stretch;
 }
 
 .pkg-card {
