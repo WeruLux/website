@@ -11,7 +11,12 @@ sitemap: false
   <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon-32x32.png">
 </head>
 <body>
-  <!-- Sveltia CMS — pinned major version; commits content changes via GitHub -->
-  <script src="https://unpkg.com/@sveltia/cms@0/dist/sveltia-cms.js"></script>
+  <!-- Sveltia CMS. Pinned to an exact version WITH an integrity hash: this page
+       holds a GitHub token with write access to the repo, so a tampered bundle
+       is the worst-case supply-chain target on the whole site. To upgrade:
+       bump the version, refetch, recompute `openssl dgst -sha384 -binary | openssl base64 -A`. -->
+  <script src="https://unpkg.com/@sveltia/cms@0.193.0/dist/sveltia-cms.js"
+          integrity="sha384-p57p6pyY1Dhz87yRDFJX6detlYKKouzeKKOoFNsPmbhKoBycAtKiCRLhEWvTScVd"
+          crossorigin="anonymous"></script>
 </body>
 </html>
