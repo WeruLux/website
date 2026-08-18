@@ -4,10 +4,10 @@ permalink: /packages/
 title: "WeruLux Packages | Jet Lag Plans With or Without a Wearable"
 description: "Three WeruLux packages: a plan built from your itinerary alone, one that reads the watch you already own, and an EEG-backed tier for corporate travel programmes."
 ---
-{% include page-header.html
-   eyebrow="Packages"
-   title="Three Ways to <em>Fly Well</em>"
-   intro="Every package runs on the same circadian engine. What changes is how much your body gets to tell it." %}
+{% assign pk = site.data.packages %}
+{% comment %} The h1 reads the same CMS fields the include would use, so edits
+   in "Page: Packages" actually change the page. {% endcomment %}
+{% include page-header.html eyebrow=pk.eyebrow title=pk.title intro=pk.intro %}
 
 {% include packages.html hide_header=true %}
 {% include contact.html %}

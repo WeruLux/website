@@ -256,6 +256,10 @@ collections:
             widget: list
             fields:
               - { name: name, label: Package name, widget: string }
+              # image and icon MUST stay declared: the CMS rewrites the file
+              # with only the fields listed here (same hazard as the nav children)
+              - { name: image, label: "Header image (leave empty for none)", widget: image, required: false }
+              - { name: icon, label: Icon, widget: select, options: [phone, watch, eeg], required: false }
               - { name: hardware, label: Hardware line, widget: string }
               - { name: hardware_note, label: Hardware detail, widget: string, required: false }
               - { name: who, label: Who it is for, widget: text, required: false }
