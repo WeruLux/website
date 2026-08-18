@@ -4,7 +4,7 @@
 # Production: set `repo` below to the real GitHub org/repo before deploying.
 backend:
   name: github
-  repo: WeruLux/lp # UPDATE if the repo lives elsewhere
+  repo: WeruLux/website # the repo the live site is built from
   branch: main
 
 media_folder: img
