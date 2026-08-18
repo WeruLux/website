@@ -31,6 +31,12 @@
 </script>
 
 <!-- FAVICON -->
+{% comment %} Google reads the favicon from /favicon.ico at the root or from these
+   links, and only accepts sizes that are a multiple of 48. 16 and 32 stay for
+   browser tabs; 48 and 96 are what search results actually use. {% endcomment %}
+<link rel="icon" href="{{ '/favicon.ico' | relative_url }}" sizes="any">
+<link rel="icon" type="image/png" sizes="96x96" href="{{ '/img/favicon-96x96.png' | relative_url }}">
+<link rel="icon" type="image/png" sizes="48x48" href="{{ '/img/favicon-48x48.png' | relative_url }}">
 <link rel="icon" type="image/png" sizes="32x32" href="{{ '/img/favicon-32x32.png' | relative_url }}">
 <link rel="icon" type="image/png" sizes="16x16" href="{{ '/img/favicon-16x16.png' | relative_url }}">
 <link rel="apple-touch-icon" sizes="180x180" href="{{ '/img/apple-touch-icon.png' | relative_url }}">
