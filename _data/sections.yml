@@ -1,6 +1,6 @@
-problem: true
-solution: true
-technology: true
+problem: false
+solution: false
+technology: false
 devices: true
 calculator: true
 value: true
