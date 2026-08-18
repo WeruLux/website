@@ -263,8 +263,15 @@
     color: var(--white);
     font-family: var(--font-body);
     overflow-x: hidden;
-    cursor: none;
     transition: background 0.4s ease, color 0.4s ease;
+  }
+
+  /* Hide the native pointer only where the custom one is actually running.
+     main.js adds `wl-cursor` in the same branch that keeps #cursor alive, so the
+     two can never disagree — an iPad with a trackpad reports pointer:coarse, gets
+     no custom cursor, and must keep its native one. */
+  @media (min-width: 768px) {
+    html.wl-cursor body { cursor: none; }
   }
 
   /* Custom cursor */
@@ -275,7 +282,9 @@
     border-radius: 50%;
     pointer-events: none;
     z-index: 9999;
-    transition: transform 0.1s ease;
+    /* scale, not transform: JS drives position via the `translate` property, and
+       transitioning the whole transform would make the dot lag the pointer */
+    transition: scale 0.1s ease;
     mix-blend-mode: screen;
   }
   .cursor-ring {
@@ -2387,7 +2396,6 @@
 
   /* Mobile: ≤767px */
   @media (max-width: 767px) {
-    body { cursor: auto; }
     .cursor, .cursor-ring { display: none; }
     a, button { cursor: pointer !important; }
 
@@ -2561,6 +2569,11 @@
     z-index: 3;
     perspective: 900px;
     overflow: hidden;
+    /* Basis for the cqw/cqh in the flight keyframes — the same box the old
+       bottom/right percentages resolved against. inset:0 means declaring it a
+       size container changes no layout, and container units use the layout
+       size, so the mobile transform: scale(0.55) still behaves as before. */
+    container-type: size;
   }
 
   .plane-world {
@@ -2580,12 +2593,21 @@
     opacity: 0;
   }
 
+  /* Flight path expressed as transform rather than bottom/right. Animating box
+     offsets meant Blink could not composite the keyframes at all, so all 7s ran
+     on the main thread: style -> layout -> paint -> raster, every frame, inside
+     a hero layer full of gradients and a mask.
+
+     The offsets are container query units, not vw/vh: cqw/cqh resolve against
+     .plane-stage — the same box the percentages resolved against — so the path
+     is identical at any viewport. vh drifts by ~130px on a tall mobile hero.
+     Derivation: raising `bottom` to X% lifts the box X%H + 120px (its base is
+     -120px), and moving `right` from 15% to Y% shifts it (Y-15)% of W left. */
   @keyframes plane-fly {
     0% {
       opacity: 0;
-      bottom: -120px;
-      right: 15%;
-      transform: rotate(-20deg) scale(0.3) perspective(400px) rotateX(30deg);
+      transform: translate3d(0, 0, 0)
+                 rotate(-20deg) scale(0.3) perspective(400px) rotateX(30deg);
       filter: blur(3px);
     }
     8% {
@@ -2593,25 +2615,21 @@
       filter: blur(0px);
     }
     30% {
-      bottom: 20%;
-      right: 25%;
-      transform: rotate(-22deg) scale(0.4) perspective(400px) rotateX(18deg);
+      transform: translate3d(calc(-10 * 1cqw), calc(-20 * 1cqh - 120px), 0)
+                 rotate(-22deg) scale(0.4) perspective(400px) rotateX(18deg);
     }
     60% {
-      bottom: 50%;
-      right: 45%;
-      transform: rotate(-25deg) scale(0.5) perspective(400px) rotateX(8deg);
+      transform: translate3d(calc(-30 * 1cqw), calc(-50 * 1cqh - 120px), 0)
+                 rotate(-25deg) scale(0.5) perspective(400px) rotateX(8deg);
     }
     85% {
-      bottom: 78%;
-      right: 62%;
-      transform: rotate(-28deg) scale(0.6) perspective(400px) rotateX(2deg);
+      transform: translate3d(calc(-47 * 1cqw), calc(-78 * 1cqh - 120px), 0)
+                 rotate(-28deg) scale(0.6) perspective(400px) rotateX(2deg);
       opacity: 1;
     }
     100% {
-      bottom: 105%;
-      right: 76%;
-      transform: rotate(-30deg) scale(0.7) perspective(600px) rotateX(0deg);
+      transform: translate3d(calc(-61 * 1cqw), calc(-105 * 1cqh - 120px), 0)
+                 rotate(-30deg) scale(0.7) perspective(600px) rotateX(0deg);
       opacity: 0;
       filter: blur(2px);
     }
@@ -2676,26 +2694,30 @@
     animation: plane-fly-2 9s cubic-bezier(0.3, 0.5, 0.5, 0.95) forwards 9.5s;
   }
 
+  /* Same conversion as plane-fly; base here is bottom:-100px, right:5%.
+     The 100% frame spells out the base pose because the original declared no
+     transform there, so it unwound to rotate(-18deg) scale(0.35) over the last
+     10% while fading — keeping that snap rather than holding the 90% pose. */
   @keyframes plane-fly-2 {
     0% {
       opacity: 0;
-      bottom: -100px; right: 5%;
-      transform: rotate(-18deg) scale(0.35);
+      transform: translate3d(0, 0, 0) rotate(-18deg) scale(0.35);
       filter: blur(2px);
     }
     6%  { opacity: 0.5; filter: blur(0); }
     50% {
-      bottom: 45%; right: 38%;
-      transform: rotate(-24deg) scale(0.6);
+      transform: translate3d(calc(-33 * 1cqw), calc(-45 * 1cqh - 100px), 0)
+                 rotate(-24deg) scale(0.6);
       opacity: 0.45;
     }
     90% {
-      bottom: 88%; right: 68%;
-      transform: rotate(-28deg) scale(0.5);
+      transform: translate3d(calc(-63 * 1cqw), calc(-88 * 1cqh - 100px), 0)
+                 rotate(-28deg) scale(0.5);
       opacity: 0.2;
     }
     100% {
-      bottom: 108%; right: 78%;
+      transform: translate3d(calc(-73 * 1cqw), calc(-108 * 1cqh - 100px), 0)
+                 rotate(-18deg) scale(0.35);
       opacity: 0;
       filter: blur(1px);
     }

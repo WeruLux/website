@@ -115,36 +115,54 @@
   // Custom cursor. Guarded: everything below this point used to die with it.
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursor-ring');
-  if (cursor && ring) {
-    let mx = 0, my = 0, rx = 0, ry = 0;
+  // A custom cursor is meaningless without a pointer, so touch devices skip the
+  // whole block rather than running a render loop nothing can see.
+  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
+  if (cursor && ring && finePointer) {
+    // Pairs with the CSS: the native pointer is only hidden while this runs.
+    document.documentElement.classList.add('wl-cursor');
+    let mx = 0, my = 0, rx = 0, ry = 0, raf = 0;
+
+    // The individual `translate` / `scale` properties rather than `transform`:
+    // they compose with the base transform each element already carries in CSS,
+    // and they replace the old left/top writes that forced a reflow per frame.
     document.addEventListener('mousemove', e => {
       mx = e.clientX; my = e.clientY;
-      cursor.style.left = mx - 4 + 'px';
-      cursor.style.top = my - 4 + 'px';
-    });
+      cursor.style.translate = (mx - 4) + 'px ' + (my - 4) + 'px';
+      if (!raf) raf = requestAnimationFrame(animRing);
+    }, { passive: true });
 
     function animRing() {
       rx += (mx - rx - 16) * 0.22;
       ry += (my - ry - 16) * 0.22;
-      ring.style.left = rx + 'px';
-      ring.style.top = ry + 'px';
-      requestAnimationFrame(animRing);
+      ring.style.translate = rx + 'px ' + ry + 'px';
+      // Stop once the ring has caught up; the next mousemove restarts it. The
+      // loop no longer runs forever against a pointer that is not moving.
+      if (Math.abs(mx - rx - 16) > 0.4 || Math.abs(my - ry - 16) > 0.4) {
+        raf = requestAnimationFrame(animRing);
+      } else {
+        raf = 0;
+      }
     }
-    animRing();
 
-    document.querySelectorAll('a, button').forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        cursor.style.transform = 'scale(2.5)';
-        ring.style.width = '48px';
-        ring.style.height = '48px';
-      });
-      el.addEventListener('mouseleave', () => {
-        cursor.style.transform = 'scale(1)';
-        ring.style.width = '32px';
-        ring.style.height = '32px';
-      });
-    });
+    // One delegated pair of listeners instead of two on each of ~88 elements.
+    document.addEventListener('mouseover', e => {
+      if (!e.target.closest('a, button')) return;
+      cursor.style.scale = '2.5';
+      ring.style.width = '48px';
+      ring.style.height = '48px';
+    }, { passive: true });
+
+    document.addEventListener('mouseout', e => {
+      if (!e.target.closest('a, button')) return;
+      cursor.style.scale = '1';
+      ring.style.width = '32px';
+      ring.style.height = '32px';
+    }, { passive: true });
+  } else if (cursor && ring) {
+    cursor.remove();
+    ring.remove();
   }
 
   // Scroll reveal
@@ -175,20 +193,47 @@
     }, 25);
   }
 
-  // Plane replay loop
+  // Plane replay loop.
+  //
+  // The plane keyframes animate bottom/right/filter, so each frame costs layout
+  // and paint on the main thread. This used to replay forever — including long
+  // after the visitor had scrolled past the hero — which is the single most
+  // expensive thing on the page. A replay that comes due while the hero is off
+  // screen is deferred instead, and runs when the hero returns.
+  let heroVisible = true;
+  const deferredPlanes = new Map();
+
   function replayPlane(el, delay) {
     setTimeout(() => {
-      el.style.animation = 'none';
-      el.offsetHeight; // reflow
-      const animName = el.classList.contains('plane-wrap-2') ? 'plane-fly-2' : 'plane-fly';
-      const dur = el.classList.contains('plane-wrap-2') ? '9s' : '7s';
-      el.style.animation = `${animName} ${dur} cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards`;
-      el.addEventListener('animationend', () => replayPlane(el, delay), { once: true });
+      if (!heroVisible) { deferredPlanes.set(el, delay); return; }
+      startPlane(el, delay);
     }, delay);
+  }
+
+  function startPlane(el, delay) {
+    el.style.animation = 'none';
+    el.offsetHeight; // reflow
+    const animName = el.classList.contains('plane-wrap-2') ? 'plane-fly-2' : 'plane-fly';
+    const dur = el.classList.contains('plane-wrap-2') ? '9s' : '7s';
+    el.style.animation = `${animName} ${dur} cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards`;
+    el.addEventListener('animationend', () => replayPlane(el, delay), { once: true });
   }
 
   const p1 = document.getElementById('plane1');
   const p2 = document.getElementById('plane2');
+  const heroEl = document.querySelector('.hero');
+
+  if (heroEl) {
+    new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        heroVisible = e.isIntersecting;
+        if (!heroVisible) return;
+        deferredPlanes.forEach((delay, el) => startPlane(el, delay));
+        deferredPlanes.clear();
+      });
+    }, { threshold: 0 }).observe(heroEl);
+  }
+
   if (p1) p1.addEventListener('animationend', () => replayPlane(p1, 4000), { once: true });
   if (p2) p2.addEventListener('animationend', () => replayPlane(p2, 6000), { once: true });
 

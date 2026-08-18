@@ -1,7 +1,10 @@
+# Hero phone screenshots. Leave `image` empty until the real file is uploaded —
+# an empty value renders the frame with no <img> at all. A path that does not
+# exist would 404 on every visit, inside the first viewport.
 phones:
-  - image: img/mobile.png
+  - image: ""
     alt: WeruLux app preview 1
-  - image: img/mobilee.png
+  - image: ""
     alt: WeruLux app preview 2
-  - image: img/mobileee.png
+  - image: ""
     alt: WeruLux app preview 3

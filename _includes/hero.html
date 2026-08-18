@@ -56,7 +56,13 @@
         <div class="phone-phone {{ pos }}" role="button" tabindex="0" aria-label="View {{ phone.alt }}"{% if forloop.index == 2 %} aria-current="true"{% endif %}>
           <div class="phone-mockup-inner">
             <span class="phone-placeholder">WeruLux</span>
-            <img class="phone-screen-image" src="{{ phone.image | relative_url }}" alt="{{ phone.alt }}" loading="lazy" onerror="this.remove()">
+            {% comment %} These sit in the first viewport, so no lazy-loading: a
+               real screenshot here is an LCP candidate and must not wait for
+               layout. Rendered only when a path is set — see _data/phones.yml.
+            {% endcomment %}
+            {% if phone.image and phone.image != "" %}
+            <img class="phone-screen-image" src="{{ phone.image | relative_url }}" alt="{{ phone.alt }}" decoding="async" onerror="this.remove()">
+            {% endif %}
             <div class="phone-notch"></div>
           </div>
         </div>
