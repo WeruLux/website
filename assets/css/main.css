@@ -2,6 +2,15 @@
 
   a, button { -webkit-tap-highlight-color: transparent; }
 
+/* Photos are not selectable or draggable. The right-click block lives in
+   main.js as a delegated listener — inline oncontextmenu attributes would be
+   refused by the CSP. */
+img {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
 /* Keyboard focus has to be visible. :focus-visible keeps it off mouse clicks,
    so this costs the pointer experience nothing. */
 :focus-visible {

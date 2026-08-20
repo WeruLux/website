@@ -690,3 +690,13 @@
     });
   });
 })();
+
+// Photos: no right-click save, no drag-out. Delegated here because the CSP
+// forbids the inline oncontextmenu attributes team.html used to carry.
+(function () {
+  function onImg(e) {
+    if (e.target && e.target.closest && e.target.closest('img')) e.preventDefault();
+  }
+  document.addEventListener('contextmenu', onImg);
+  document.addEventListener('dragstart', onImg);
+})();
