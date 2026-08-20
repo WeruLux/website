@@ -3,6 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% comment %} CSP via meta because GitHub Pages cannot send headers. Frame-
+   ancestors is not honoured in meta form — that one needs the Cloudflare
+   move. connect/form-action list the two form providers; if the waitlist or
+   contact endpoint ever moves to a new provider, add its origin here or the
+   form will be silently blocked. unsafe-hashes covers the onerror on hero
+   phone screenshots. {% endcomment %}
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-hashes' 'sha256-9f8ZK5epjuMsYtXFjPqrgJI0L4QOAUYmJdHtT+RSH/c='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://formspree.io https://*.sibforms.com; form-action 'self' https://formspree.io https://*.sibforms.com; base-uri 'self'; object-src 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <title>{{ page.title | default: site.title }}</title>
 
 {% comment %}
@@ -13,22 +21,7 @@
   reaches the reveal observer, so a script failure can never leave the page
   blank.
 {% endcomment %}
-<script>
-(function () {
-  var d = document.documentElement;
-  d.className += ' js';
-  try {
-    var t = localStorage.getItem('wl-theme');
-    if (t) d.setAttribute('data-theme', t);
-    else if (!window.matchMedia('(prefers-color-scheme: dark)').matches) d.setAttribute('data-theme', 'light');
-  } catch (e) {}
-  addEventListener('load', function () {
-    setTimeout(function () {
-      if (!window.__wlRevealReady) d.classList.remove('js');
-    }, 1200);
-  });
-})();
-</script>
+<script src="{{ '/assets/js/theme.js' | relative_url }}"></script>
 
 <!-- FAVICON -->
 {% comment %} Google reads the favicon from /favicon.ico at the root or from these

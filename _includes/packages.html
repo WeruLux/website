@@ -95,7 +95,7 @@
           {% endif %}
 
           {% if item.cta_label and item.cta_label != "" %}
-          <a class="pkg-cta{% if item.featured %} pkg-cta-primary{% endif %}" href="{{ item.cta_href | relative_url }}">
+          <a class="pkg-cta{% if item.featured %} pkg-cta-primary{% endif %}" href="{% include safe-href.html url=item.cta_href %}">
             <span>{{ item.cta_label }}</span>
           </a>
           {% endif %}

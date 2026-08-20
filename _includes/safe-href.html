@@ -1,0 +1,12 @@
+{%- comment -%}
+  Emits include.url only if it is a link a CMS field is allowed to be:
+  site-relative, an anchor, http(s), or mailto. Anything else (javascript:,
+  data:, vbscript:, protocol-relative //) collapses to '#'. Same idea as the
+  https:// normalisation social.html already does, applied as an allow-list.
+{%- endcomment -%}
+{%- assign u = include.url | default: '' | strip -%}
+{%- assign c1 = u | slice: 0, 1 -%}
+{%- assign c2 = u | slice: 0, 2 -%}
+{%- assign p7 = u | slice: 0, 7 -%}
+{%- assign p8 = u | slice: 0, 8 -%}
+{%- if c2 == '//' -%}#{%- elsif c1 == '/' or c1 == '#' or p8 == 'https://' or p7 == 'http://' or p7 == 'mailto:' -%}{{ u }}{%- else -%}#{%- endif -%}
