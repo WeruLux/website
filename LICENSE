@@ -1,0 +1,18 @@
+Copyright (c) 2026 WeruLux. All rights reserved.
+
+This repository backs the werulux.com website. It is publicly readable so the
+site can be built, deployed, and audited — not to grant reuse rights.
+
+No license is granted to copy, modify, distribute, or reuse the source code,
+design, text, photographs, or data in this repository, in whole or in part,
+except as permitted by applicable law. The WeruLux name and logo are the
+property of WeruLux and may not be used without prior written permission.
+
+Third-party components remain under their own licenses:
+
+  - The Cormorant Garamond and DM Sans font files in assets/fonts/ are
+    licensed under the SIL Open Font License 1.1 — see assets/fonts/OFL.txt.
+  - Sveltia CMS (loaded by /admin/ from its CDN, not vendored here) is MIT
+    licensed by its authors.
+
+Permissions and questions: contact@werulux.com
