@@ -15,3 +15,11 @@ subjects:
   - Investment Inquiry
   - Press & Media
   - General Inquiry
+
+# Location card under the contact copy. The map is a self-hosted image (no
+# Google embed, no third-party requests — the privacy policy's no-tracking
+# claim stays true). Clicking it opens the pin in the visitor's maps app.
+location_label: Japan, Kanagawa Prefecture · Kamakura
+location_coords: 35.319237, 139.546722
+location_map: img/map-kamakura.webp
+location_link: https://www.google.com/maps?q=35.319237,139.546722

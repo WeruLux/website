@@ -10,6 +10,21 @@
       </div>
       <h2 class="contact-heading">{{ site.data.contact.heading }}</h2>
       <p class="contact-desc">{{ site.data.contact.description }}</p>
+
+      {% assign c = site.data.contact %}
+      {% if c.location_map and c.location_map != "" and c.location_label and c.location_label != "" %}
+      <a class="contact-map" href="{% include safe-href.html url=c.location_link %}"
+         target="_blank" rel="noopener noreferrer"
+         aria-label="Open the WeruLux location in your maps app">
+        <img src="{{ c.location_map | relative_url }}" alt="Map of Kamakura, Japan — WeruLux's location marked" loading="lazy" decoding="async">
+        <span class="contact-map-caption">
+          <span class="contact-map-label">{{ c.location_label }}</span>
+          {% if c.location_coords and c.location_coords != "" %}
+          <span class="contact-map-coords">{{ c.location_coords }}</span>
+          {% endif %}
+        </span>
+      </a>
+      {% endif %}
     </div>
 
     <!-- Right: form -->

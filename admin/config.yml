@@ -304,6 +304,10 @@ collections:
           - { name: confirm_message, label: Success message, widget: string }
           - { name: fallback_email, label: Fallback email address, widget: string }
           - { name: subjects, label: Inquiry types (dropdown), widget: list }
+          - { name: location_label, label: "Location line (empty hides the map card)", widget: string, required: false }
+          - { name: location_coords, label: Coordinates shown, widget: string, required: false }
+          - { name: location_map, label: Map image (self-hosted), widget: image, required: false }
+          - { name: location_link, label: "Open-in-maps link", widget: string, required: false }
 
   - name: legal
     label: Legal Pages

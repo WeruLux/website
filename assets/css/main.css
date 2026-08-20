@@ -4740,6 +4740,63 @@ body:has(.announcement-bar) .nav-drawer { top: 34px; }
   .social-link:hover { transform: none; }
 }
 
+/* ── CONTACT LOCATION MAP ─────────────────────────────────────────────────
+   A self-hosted, palette-graded map card. The whole card is one link that
+   opens the pin in the visitor's maps app — no embedded third-party map. */
+.contact-map {
+  display: block;
+  margin-top: 2.2rem;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  overflow: hidden;
+  text-decoration: none;
+  transition: border-color 0.4s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.contact-map:hover { border-color: rgba(194,49,82,0.4); transform: translateY(-3px); }
+
+.contact-map img {
+  display: block;
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+}
+
+.contact-map-caption {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1.1rem;
+  background: rgba(255,255,255,0.03);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.contact-map-label {
+  font-size: 0.78rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: var(--mist);
+}
+
+.contact-map-coords {
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: var(--smoke);
+  white-space: nowrap;
+}
+
+[data-theme="light"] .contact-map { border-color: rgba(0,0,0,0.1); }
+[data-theme="light"] .contact-map:hover { border-color: rgba(160,30,56,0.4); }
+[data-theme="light"] .contact-map-caption {
+  background: rgba(0,0,0,0.03);
+  border-top-color: rgba(0,0,0,0.07);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-map, .contact-map:hover { transition: none; transform: none; }
+}
+
 /* ── PACKAGES ─────────────────────────────────────────────────────────────
    Header art, a floating icon lifted from the Hardware section, and motion that
    only arrives on hover. The reference this came from used neon glow and 70px
