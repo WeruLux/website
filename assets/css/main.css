@@ -2574,6 +2574,8 @@ img {
     }
     .pillar:nth-child(2) .pillar-num,
     .pillar:nth-child(2) .pillar-icon-wrap { grid-column: auto; grid-row: auto; }
+    /* number left, icon pushed to the right edge of the same line */
+    .pillar-icon-wrap { justify-self: end; }
     .pillar-heading,
     .pillar:nth-child(2) .pillar-heading {
       grid-column: 1 / -1; grid-row: auto;
