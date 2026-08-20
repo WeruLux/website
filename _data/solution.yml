@@ -7,18 +7,22 @@ intro: >-
   WeruLux is the first AI-powered travel companion that treats your body as the
   most important system on the plane. Adapting in real-time to your biology,
   goals, and itinerary.
+# `phase` is the small kicker over each title (leave empty to hide it).
 pillars:
-  - title: Predictive Intelligence
+  - phase: Before departure
+    title: Predictive Intelligence
     text: >-
       Using circadian science, WeruLux builds a personal jet lag risk profile
       and personalized travel plan (optimal timing for sleep, work, meals
       onboard, etc.).
-  - title: In-Flight Interventions
+  - phase: In flight
+    title: In-Flight Interventions
     text: >-
       Using physiological EEG data and physical interventions, we will
       hyper-personalize your travel journey and recovery plan using refined
       recommendations thanks to real-time physiological data.
-  - title: Continuous Adaptive Calibration
+  - phase: After landing
+    title: Continuous Adaptive Calibration
     text: >-
       After landing, the platform tracks recovery via passive phone signals and
       post-flight feedback, continuously refining your personal circadian model.

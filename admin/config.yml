@@ -214,9 +214,10 @@ collections:
           - { name: title, label: Title (HTML allowed), widget: string }
           - { name: intro, label: Intro paragraph, widget: text }
           - name: pillars
-            label: Pillars (text reveals on hover; icon shown when no image)
+            label: Pillars
             widget: list
             fields:
+              - { name: phase, label: "Phase kicker (e.g. Before departure — empty hides it)", widget: string, required: false }
               - { name: title, label: Title, widget: string }
               - { name: image, label: Image (optional), widget: image, required: false }
               - { name: image_light, label: "Image for light mode (optional — dark one is reused if empty)", widget: image, required: false }

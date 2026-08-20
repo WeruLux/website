@@ -108,13 +108,18 @@ img {
   [data-theme="light"] .team { background: #F0EDE8; }
   [data-theme="light"] .cta-section { background: #F0EDE8; }
 
-  [data-theme="light"] .pillars {
-    background: rgba(0,0,0,0.06);
-    border-color: rgba(0,0,0,0.06);
+  [data-theme="light"] .pillar {
+    background: linear-gradient(160deg, rgba(0,0,0,0.028), rgba(0,0,0,0.006));
+    border-color: rgba(0,0,0,0.09);
   }
-  [data-theme="light"] .pillar { background: #F0EDE8; }
-  [data-theme="light"] .pillar:hover { background: #E8E4DE; }
-  [data-theme="light"] .pillar-num { color: rgba(160,30,56,0.12); }
+  [data-theme="light"] .pillar:hover { background: #E8E4DE; border-color: rgba(160,30,56,0.3); }
+  [data-theme="light"] .pillar-num {
+    background: linear-gradient(135deg, rgba(160,30,56,0.6), rgba(155,122,62,0.55));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  [data-theme="light"] .pillar-icon-wrap { background: rgba(160,30,56,0.05); }
 
   [data-theme="light"] .step-dot {
     background: #E8E4DE;
@@ -1078,6 +1083,7 @@ img {
   /* SOLUTION */
   .solution {
     background: var(--ink);
+    overflow: hidden;
   }
 
   .solution-header {
@@ -1095,58 +1101,115 @@ img {
     color: var(--smoke);
   }
 
+  /* Three full-width rows, not columns: each pillar reads as one horizontal
+     paragraph and slides in from its own side (see .slide-from-*). Separate
+     cards with real air between them; the same surface family as .pkg-card. */
   .pillars {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
   }
 
   .pillar {
-    background: var(--ink);
-    padding: 3rem 2.5rem;
+    background: linear-gradient(160deg, rgba(255,255,255,0.035), rgba(255,255,255,0.006));
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 2.2rem 2.6rem;
     position: relative;
-    overflow: hidden;
-    transition: background 0.4s;
+    /* no overflow:hidden — the thread node (::after) sits outside the card */
+    transition: background 0.4s, border-color 0.4s;
+    display: grid;
+    grid-template-columns: auto auto minmax(200px, 250px) 1fr;
+    column-gap: 2.2rem;
+    align-items: center;
   }
 
+  /* left accent, drawn downward on hover; inset + rounded so it follows the
+     card corner without needing overflow:hidden */
   .pillar::before {
     content: '';
     position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, var(--crimson-glow), transparent);
-    transform: scaleX(0);
-    transition: transform 0.4s;
+    top: 10px; bottom: 10px; left: 0;
+    border-radius: 2px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--crimson-glow), rgba(201,169,110,0.65));
+    transform: scaleY(0);
+    transform-origin: top center;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .pillar:hover::before { transform: scaleX(1); }
-  .pillar:hover { background: var(--ink-soft); }
+  .pillar:hover::before { transform: scaleY(1); }
+  .pillar:hover { background: var(--ink-soft); border-color: rgba(194,49,82,0.3); }
+
+  /* the middle row is mirrored — it enters from the right, so it reads from
+     the right: text, then title, icon, number */
+  .pillar:nth-child(2) {
+    grid-template-columns: 1fr minmax(200px, 250px) auto auto;
+  }
+  .pillar:nth-child(2) .pillar-text { grid-column: 1; grid-row: 1; }
+  .pillar:nth-child(2) .pillar-heading {
+    grid-column: 2; grid-row: 1;
+    align-items: flex-end;
+    text-align: right;
+  }
+  .pillar:nth-child(2) .pillar-icon-wrap { grid-column: 3; grid-row: 1; }
+  .pillar:nth-child(2) .pillar-num { grid-column: 4; grid-row: 1; }
+  .pillar:nth-child(2)::before { left: auto; right: 0; }
 
   .pillar-num {
     font-family: var(--font-display);
-    font-size: 4rem;
+    font-size: 2.9rem;
     font-weight: 300;
-    color: rgba(194,49,82,0.1);
     line-height: 1;
-    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, rgba(194,49,82,0.55), rgba(201,169,110,0.5));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
   .pillar-icon-wrap {
-    width: 48px; height: 48px;
+    width: 52px; height: 52px;
     border: 1px solid rgba(194,49,82,0.25);
+    border-radius: 12px;
+    background: rgba(194,49,82,0.06);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1.5rem;
   }
 
   .pillar-icon {
-    width: 24px; height: 24px;
+    width: 26px; height: 26px;
     stroke: var(--crimson-glow);
     fill: none;
     stroke-width: 1.5;
+  }
+
+  /* strokes trace themselves in after the row lands (pathLength=1 in the SVG
+     lets one dasharray value cover every shape) */
+  .js .pillar-icon path,
+  .js .pillar-icon circle {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    transition: stroke-dashoffset 0.9s ease 0.5s;
+  }
+
+  .js .pillar.visible .pillar-icon path,
+  .js .pillar.visible .pillar-icon circle { stroke-dashoffset: 0; }
+
+  .js .pillar.reveal-delay-2 .pillar-icon path,
+  .js .pillar.reveal-delay-2 .pillar-icon circle { transition-delay: 0.8s; }
+
+  .js .pillar.reveal-delay-4 .pillar-icon path,
+  .js .pillar.reveal-delay-4 .pillar-icon circle { transition-delay: 1.1s; }
+
+  .pillar-heading { display: flex; flex-direction: column; gap: 0.45rem; }
+
+  .pillar-phase {
+    font-size: 0.58rem;
+    font-weight: 400;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--gold);
   }
 
   .pillar-title {
@@ -1154,10 +1217,12 @@ img {
     font-size: 1.4rem;
     font-weight: 400;
     color: var(--white);
-    margin-bottom: 0.75rem;
+    margin: 0;
   }
 
   .pillar-text {
+    margin: 0;
+    max-width: 58ch;
     font-size: 0.85rem;
     font-weight: 300;
     line-height: 1.75;
@@ -2122,18 +2187,37 @@ img {
     transform: none;
   }
 
+  /* Directional entrances for the reveal system. .reveal.visible already
+     resets transform, so these only shape where the element starts. */
+  .js .reveal.slide-from-left { transform: translateX(-64px); }
+  .js .reveal.slide-from-right { transform: translateX(64px); }
+
+  /* The arrival reset must outrank the (0,3,0) slide selectors above — the
+     bare .reveal.visible reset is only (0,2,0) and loses, which left slid
+     rows resting 64px off their line. */
+  .js .reveal.visible { transform: none; }
+
   @media (prefers-reduced-motion: reduce) {
-    .js .reveal {
+    .js .reveal,
+    .js .reveal.slide-from-left,
+    .js .reveal.slide-from-right {
       opacity: 1;
       transform: none;
       transition: none;
     }
+    .js .pillar-icon path,
+    .js .pillar-icon circle {
+      stroke-dashoffset: 0;
+      transition: none;
+    }
   }
 
-  .reveal-delay-1 { transition-delay: 0.15s; }
-  .reveal-delay-2 { transition-delay: 0.3s; }
-  .reveal-delay-3 { transition-delay: 0.45s; }
-  .reveal-delay-4 { transition-delay: 0.6s; }
+  /* .js prefix matters: .js .reveal's transition shorthand resets delay with
+     specificity (0,2,0), so bare .reveal-delay-N (0,1,0) silently loses. */
+  .js .reveal-delay-1 { transition-delay: 0.15s; }
+  .js .reveal-delay-2 { transition-delay: 0.3s; }
+  .js .reveal-delay-3 { transition-delay: 0.45s; }
+  .js .reveal-delay-4 { transition-delay: 0.6s; }
 
   /* Smooth theme transitions */
   nav, section, footer, .pillar, .team-card-inner,
@@ -2376,8 +2460,6 @@ img {
     .clock-inner-num { font-size: 2.4rem; }
     .scale-badge { right: -10px; }
 
-    .pillars { grid-template-columns: 1fr 1fr; }
-    .pillar:last-child { grid-column: 1 / -1; }
 
     .steps { grid-template-columns: repeat(2, 1fr); gap: 3rem 2rem; }
     .steps-line { display: none; }
@@ -2482,9 +2564,25 @@ img {
     .scale-badge { right: 0; bottom: -10px; }
 
     .solution-header { margin-bottom: 3rem; }
-    .pillars { grid-template-columns: 1fr; }
-    .pillar { padding: 2rem 1.5rem; }
-    .pillar:last-child { grid-column: auto; }
+    /* narrow screens: number+icon share the first line, everything spans */
+    .pillar,
+    .pillar:nth-child(2) {
+      padding: 2rem 1.5rem;
+      grid-template-columns: auto 1fr;
+      column-gap: 1.2rem;
+      row-gap: 0.9rem;
+    }
+    .pillar:nth-child(2) .pillar-num,
+    .pillar:nth-child(2) .pillar-icon-wrap { grid-column: auto; grid-row: auto; }
+    .pillar-heading,
+    .pillar:nth-child(2) .pillar-heading {
+      grid-column: 1 / -1; grid-row: auto;
+      align-items: flex-start;
+      text-align: left;
+    }
+    .pillar-text,
+    .pillar:nth-child(2) .pillar-text { grid-column: 1 / -1; grid-row: auto; max-width: none; }
+    .pillar:nth-child(2)::before { left: 0; right: auto; }
 
     .steps { grid-template-columns: 1fr; gap: 2rem; }
     .steps-line { display: none; }
