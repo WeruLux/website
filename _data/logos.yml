@@ -1,11 +1,5 @@
-# Credibility band shown under the hero. Appears when at least one item
-# exists; hides when the list is empty. Each item renders its `image` if set,
-# otherwise the `name` as a text wordmark. Keep the heading honest — these are
-# institutions the team and advisors come from, not partners.
 heading: Team & advisors from
 items:
-  - name: Stanford University
-    image: img/logos/stanford.webp
   - name: Waseda University
     image: img/logos/waseda.webp
   - name: Paris-Saclay University
@@ -13,4 +7,4 @@ items:
   - name: Tokyo Institute of Technology
     image: img/logos/tokyo-tech.webp
   - name: EM Lyon
-    image: ""
+    image: ''
