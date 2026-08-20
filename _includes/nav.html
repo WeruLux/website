@@ -14,7 +14,10 @@
         {% for child in link.children %}{% if child.section == "" or site.data.sections[child.section] %}{% assign shown = shown | plus: 1 %}{% endif %}{% endfor %}
         {% if shown > 0 %}
         <li class="nav-drawer-group">
-          <details class="nav-drawer-details">
+          {% comment %} Shared name makes the groups exclusive: opening one closes
+               the other natively, no JS. Older engines fall back to
+               independent toggles. {% endcomment %}
+          <details class="nav-drawer-details" name="drawer-nav">
             <summary class="nav-drawer-summary">
               <span>{{ link.label }}</span>
               <svg class="nav-drawer-caret" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5L6 6.5L11 1.5"/></svg>
