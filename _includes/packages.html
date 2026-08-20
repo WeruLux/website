@@ -30,57 +30,32 @@
         <span class="pkg-badge pkg-badge-bare">{{ item.badge }}</span>
         {% endif %}
 
-        {% comment %} Same icon set as the Hardware section, so a package and the
-           device it depends on are visibly the same family. {% endcomment %}
-        <div class="pkg-icon" aria-hidden="true">
-          {% case item.icon %}
-          {% when 'eeg' %}
-          <svg viewBox="0 0 120 90">
-            <path class="d-band-body" d="M26 58C26 30 94 30 94 58"/>
-            <circle class="d-node" cx="34" cy="50" r="3"/>
-            <circle class="d-node" cx="86" cy="50" r="3"/>
-            <path class="d-wave" d="M30 68h9l5-13 6 26 5-19 5 10 5-6h30"/>
-          </svg>
-          {% when 'watch' %}
-          <svg viewBox="0 0 120 90">
-            <rect class="d-stroke" x="40" y="24" width="40" height="42" rx="12"/>
-            <path class="d-stroke" d="M48 24V12h24v12M48 66v12h24V66"/>
-            <path class="d-stroke" d="M80 38h5a3 3 0 0 1 0 6h-5"/>
-            <path class="d-wave" d="M49 46h5l4-8 5 16 4-8h5"/>
-          </svg>
-          {% else %}
-          <svg viewBox="0 0 120 90">
-            <rect class="d-stroke" x="44" y="10" width="32" height="70" rx="8"/>
-            <path class="d-stroke" d="M55 18h10"/>
-            <path class="d-wave" d="M50 50h5l4-9 5 18 4-9h5"/>
-          </svg>
-          {% endcase %}
-        </div>
-
         <div class="pkg-body">
+          <div class="pkg-kicker">
+            <span class="pkg-kicker-icon" aria-hidden="true">
+              {% case item.icon %}
+              {% when 'eeg' %}
+              <svg viewBox="0 0 120 90"><path class="d-band-body" d="M26 58C26 30 94 30 94 58"/><circle class="d-node" cx="34" cy="50" r="3"/><circle class="d-node" cx="86" cy="50" r="3"/><path class="d-wave" d="M30 68h9l5-13 6 26 5-19 5 10 5-6h30"/></svg>
+              {% when 'watch' %}
+              <svg viewBox="0 0 120 90"><rect class="d-stroke" x="40" y="24" width="40" height="42" rx="12"/><path class="d-stroke" d="M48 24V12h24v12M48 66v12h24V66"/><path class="d-wave" d="M49 46h5l4-8 5 16 4-8h5"/></svg>
+              {% else %}
+              <svg viewBox="0 0 120 90"><rect class="d-stroke" x="44" y="10" width="32" height="70" rx="8"/><path class="d-stroke" d="M55 18h10"/><path class="d-wave" d="M50 50h5l4-9 5 18 4-9h5"/></svg>
+              {% endcase %}
+            </span>
+            <span>{{ item.hardware }}</span>
+          </div>
+
           <h2 class="pkg-name">{{ item.name }}</h2>
 
-          <div class="pkg-hardware">
-            <span class="pkg-hardware-label">Hardware</span>
-            <span class="pkg-hardware-name">{{ item.hardware }}</span>
-            {% if item.hardware_note and item.hardware_note != "" %}
-            <span class="pkg-hardware-note">{{ item.hardware_note }}</span>
-            {% endif %}
-          </div>
-
-          {% comment %} Price stays out of the markup entirely until it is filled
-             in, so the card carries no empty slot in the meantime. {% endcomment %}
-          {% if item.price and item.price != "" %}
-          <div class="pkg-price">
-            <span class="pkg-price-value">{{ item.price }}</span>
-            {% if item.price_note and item.price_note != "" %}
-            <span class="pkg-price-note">{{ item.price_note }}</span>
-            {% endif %}
-          </div>
+          {% if item.hardware_note and item.hardware_note != "" %}
+          <p class="pkg-note-line">{{ item.hardware_note }}</p>
           {% endif %}
 
           {% if item.who and item.who != "" %}
-          <p class="pkg-who">{{ item.who }}</p>
+          <div class="pkg-bestfor">
+            <span class="pkg-bestfor-label">Best for</span>
+            <span class="pkg-bestfor-text">{{ item.who }}</span>
+          </div>
           {% endif %}
 
           {% if item.features and item.features.size > 0 %}
@@ -94,9 +69,19 @@
           </ul>
           {% endif %}
 
+          {% comment %} Price stays out of the markup entirely until filled. {% endcomment %}
+          {% if item.price and item.price != "" %}
+          <div class="pkg-price">
+            <span class="pkg-price-value">{{ item.price }}</span>
+            {% if item.price_note and item.price_note != "" %}
+            <span class="pkg-price-note">{{ item.price_note }}</span>
+            {% endif %}
+          </div>
+          {% endif %}
+
           {% if item.cta_label and item.cta_label != "" %}
           <a class="pkg-cta{% if item.featured %} pkg-cta-primary{% endif %}" href="{% include safe-href.html url=item.cta_href %}">
-            <span>{{ item.cta_label }}</span>
+            <span>{{ item.cta_label }}</span><span class="pkg-cta-arrow" aria-hidden="true">&rarr;</span>
           </a>
           {% endif %}
         </div>
