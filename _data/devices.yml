@@ -23,6 +23,10 @@ items:
     type: watch
     detail: Sleep & activity signals
     status: Planned
+  - name: Oura Ring
+    type: ring
+    detail: Sleep, readiness & temperature
+    status: Planned
 note: >-
   No wearable is required — the core plan works from your itinerary and
   check-ins alone.

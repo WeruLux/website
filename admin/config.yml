@@ -241,7 +241,7 @@ collections:
             widget: list
             fields:
               - { name: name, label: Device name, widget: string }
-              - { name: type, label: Illustration, widget: select, options: [eeg, watch, band] }
+              - { name: type, label: Illustration, widget: select, options: [eeg, watch, band, ring] }
               - { name: detail, label: What it provides, widget: string, required: false }
               - { name: status, label: "Status (write \"Supported\" once it actually ships)", widget: string }
           - { name: note, label: Footnote, widget: text, required: false }
