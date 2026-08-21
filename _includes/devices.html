@@ -33,15 +33,15 @@
           </svg>
           {% when 'ring' %}
           <svg viewBox="0 0 120 90" aria-hidden="true">
-            <!-- the ring face-on: band with an inner bore -->
-            <circle class="d-stroke" cx="60" cy="42" r="26"/>
-            <circle class="d-stroke" cx="60" cy="42" r="17"/>
-            <!-- sensor pads on the inner band -->
-            <circle class="d-node" cx="60" cy="28" r="2.4"/>
-            <circle class="d-node" cx="47.5" cy="49" r="2.4"/>
-            <circle class="d-node" cx="72.5" cy="49" r="2.4"/>
-            <!-- the signal it reads -->
-            <path class="d-wave" d="M30 78h14l5-8 6 14 5-10 4 4h22"/>
+            <!-- the ring face-on: band with an inner bore; the crimson lives
+                 in the band itself as the sensor arc, not a detached wave -->
+            <circle class="d-stroke" cx="60" cy="45" r="26"/>
+            <circle class="d-stroke" cx="60" cy="45" r="17"/>
+            <path class="d-wave" d="M76.7 28.1 A26 26 0 0 1 74.9 66.3" fill="none"/>
+            <!-- sensor pads on the band -->
+            <circle class="d-node" cx="60" cy="31" r="2.4"/>
+            <circle class="d-node" cx="47.5" cy="52" r="2.4"/>
+            <circle class="d-node" cx="72.5" cy="52" r="2.4"/>
           </svg>
           {% when 'band' %}
           <svg viewBox="0 0 120 90" aria-hidden="true">
