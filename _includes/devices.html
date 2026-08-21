@@ -37,11 +37,13 @@
                  in the band itself as the sensor arc, not a detached wave -->
             <circle class="d-stroke" cx="60" cy="45" r="26"/>
             <circle class="d-stroke" cx="60" cy="45" r="17"/>
-            <path class="d-wave" d="M76.7 28.1 A26 26 0 0 1 74.9 66.3" fill="none"/>
+            <!-- the signal inside the bore, the way the watches carry theirs
+                 inside the screen -->
+            <path class="d-wave" d="M48 45h4l3-6 4 12 3-6h10"/>
             <!-- sensor pads on the band -->
-            <circle class="d-node" cx="60" cy="31" r="2.4"/>
-            <circle class="d-node" cx="47.5" cy="52" r="2.4"/>
-            <circle class="d-node" cx="72.5" cy="52" r="2.4"/>
+            <circle class="d-node" cx="60" cy="24.5" r="2.4"/>
+            <circle class="d-node" cx="42" cy="57" r="2.4"/>
+            <circle class="d-node" cx="78" cy="57" r="2.4"/>
           </svg>
           {% when 'band' %}
           <svg viewBox="0 0 120 90" aria-hidden="true">
