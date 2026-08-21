@@ -4867,7 +4867,6 @@ body:has(.announcement-bar) .nav-drawer { top: 34px; }
   white-space: nowrap;
 }
 
-.pkg-badge-bare { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); }
 
 .pkg-head {
   position: relative;

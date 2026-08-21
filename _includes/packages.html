@@ -19,15 +19,16 @@
       {% for item in pk.items %}
       <article class="pkg-card{% if item.featured %} pkg-featured{% endif %}">
 
+        {% comment %} The badge is a child of the card, not the photo — the
+           photo box clips to its rounded corners and would cut the pill's
+           upper half. {% endcomment %}
+        {% if item.badge and item.badge != "" %}
+        <span class="pkg-badge">{{ item.badge }}</span>
+        {% endif %}
         {% if item.image and item.image != "" %}
         <div class="pkg-head">
           <img src="{{ item.image | relative_url }}" alt="" loading="lazy" decoding="async">
-          {% if item.badge and item.badge != "" %}
-          <span class="pkg-badge">{{ item.badge }}</span>
-          {% endif %}
         </div>
-        {% elsif item.badge and item.badge != "" %}
-        <span class="pkg-badge pkg-badge-bare">{{ item.badge }}</span>
         {% endif %}
 
         <div class="pkg-body">
