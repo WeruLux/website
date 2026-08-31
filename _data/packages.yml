@@ -39,13 +39,13 @@ items:
     image: img/packages/premium.webp
     icon: eeg
     hardware: Muse S EEG headband
-    hardware_note: Included with corporate programmes
-    who: Corporate travel programmes, and business and first class travellers
+    hardware_note: Included with corporate programs
+    who: For corporate accounts and business/first-class travelers
     features:
       - Everything in Standard
-      - Real-time EEG sleep staging for the sharpest personalization we offer
-      - Built for teams whose people land and perform the same day
-      - Deployment and reporting for travel managers
+      - Real-time EEG sleep staging for unmatched plan personalization
+      - Designed for high-stakes teams with zero time for jet lag on arrival day
+      - Frictionless deployment and enterprise analytics for travel managers
     price: ''
     price_note: ''
     badge: ''
