@@ -1,11 +1,6 @@
-# Supported / planned hardware. Each device carries its own status label —
-# change a status to "Supported" the day that integration actually ships.
-# `type` picks the illustration: eeg | watch | band  (no brand logos are used).
 eyebrow: Hardware
 title: Designed for the Devices You <em>Already Wear</em>
-intro: >-
-  WeruLux reads what your body is already telling your devices — and works
-  without any of them until you connect one.
+intro: WeruLux works on its own from day one. When you're ready, connect your devices to unlock personalized body insights.
 items:
   - name: Muse S
     type: eeg
@@ -27,6 +22,4 @@ items:
     type: ring
     detail: Sleep, readiness & temperature
     status: Planned
-note: >-
-  No wearable is required — the core plan works from your itinerary and
-  check-ins alone.
+note: No wearable is required — the core plan works from your itinerary and check-ins alone.
