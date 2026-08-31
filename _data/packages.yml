@@ -26,8 +26,8 @@ items:
     who: Built for frequent travelers who already track their sleep and biometrics
     features:
       - Everything in Essentials
-      - Reads sleep, heart-rate variability, and activity from your wearable
-      - Plans adapt to how you actually slept, not how you meant to
+      - Syncs your sleep, heart-rate variability, and daily activity directly from your wearable
+      - Built for actual sleep, not optimistic schedules
       - Nothing new to buy, nothing extra to carry
     price: ''
     price_note: ''
