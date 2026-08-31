@@ -1,10 +1,7 @@
-# Scientific & strategic advisors.
 advisors:
-  - name: Dr. Renske Lok
+  - name: Renske Lok, PhD
     title: Circadian Physiologist
-    institution: >-
-      Former Postdoctoral Fellow at Stanford University's Center for Sleep
-      Sciences and Medicine
+    institution: Former Postdoctoral Fellow at Stanford University's Center for Sleep Sciences and Medicine
     photo: img/Renske.webp
   - name: Confidential Scientific Advisor
     title: Leading Circadian Physiologist & Tenured Professor
@@ -15,6 +12,6 @@ advisors:
     institution: Tokyo Institute of Technology · Osaka University
     photo: img/abdelkader.webp
   - name: Guillaume Hansali
-    title: Entrepreneur & University President
+    title: Serial Entrepreneur - Startup & Growth Advisor
     institution: Tokyo, Japan
     photo: img/Guillaume.webp
