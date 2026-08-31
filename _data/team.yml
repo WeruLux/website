@@ -22,7 +22,7 @@ members:
     photo: img/Sara.webp
     bio: Ex EY France<br>EM Lyon Business School<br>HEC Alger
     protect_photo: false
-  - name: Nada Nouha Aderghal
+  - name: Nada Aderghal
     role: Contributing Engineer
     photo: /img/Pranonym.webp
     bio: Embedded Systems Consultant
