@@ -1,31 +1,23 @@
-# Product packages. Each card renders only what is filled in:
-#   - leave `price` empty and no price line appears at all
-#   - leave `badge` empty and no ribbon appears
-# `featured: true` gives one card the raised treatment — keep it on exactly one.
-# The order here is the order on the page.
 eyebrow: Packages
 title: Three Ways to <em>Fly Well</em>
-intro: >-
-  Every package runs on the same circadian engine. What changes is how much
-  your body gets to tell it.
+intro: Every plan uses the same core circadian engine. You simply choose how much data your body shares.
 items:
   - name: Essentials
     image: img/packages/essentials.webp
     icon: phone
     hardware: No hardware
     hardware_note: Itinerary and daily check-ins
-    who: Travellers who want a plan without buying anything new
+    who: No new gadgets. Just a smarter plan for the devices you already have.
     features:
       - A personalized light, sleep and caffeine plan for every flight
       - Built from your itinerary, your chronotype and how you answer each day
       - Works on any phone, with nothing to wear
-    price: ""
-    price_note: ""
-    badge: ""
+    price: ''
+    price_note: ''
+    badge: ''
     featured: false
     cta_label: Join the waitlist
-    cta_href: "/#waitlist"
-
+    cta_href: /#waitlist
   - name: Standard
     image: img/packages/standard.webp
     icon: watch
@@ -37,13 +29,12 @@ items:
       - Reads sleep, heart-rate variability and activity from your wearable
       - Plans adapt to how you actually slept, not how you meant to
       - Nothing new to buy, nothing extra to carry
-    price: ""
-    price_note: ""
+    price: ''
+    price_note: ''
     badge: Most travellers
     featured: true
     cta_label: Join the waitlist
-    cta_href: "/#waitlist"
-
+    cta_href: /#waitlist
   - name: Premium
     image: img/packages/premium.webp
     icon: eeg
@@ -55,13 +46,10 @@ items:
       - Real-time EEG sleep staging for the sharpest personalization we offer
       - Built for teams whose people land and perform the same day
       - Deployment and reporting for travel managers
-    price: ""
-    price_note: ""
-    badge: ""
+    price: ''
+    price_note: ''
+    badge: ''
     featured: false
     cta_label: Talk to us
-    cta_href: "/#contact"
-
-note: >-
-  No wearable is required to start. Connect one whenever you like — your plan
-  gets sharper, not different.
+    cta_href: /#contact
+note: No wearable is required to start. Connect one whenever you like — your plan gets sharper, not different.
