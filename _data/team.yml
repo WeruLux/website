@@ -7,6 +7,11 @@ members:
     photo: img/Louisa.webp
     bio: Innovation Management & Strategy | Ex-EDF R&D · Elsevier Q1 Author <br> Waseda University · Paris-Saclay University · HEC Alger
     protect_photo: false
+  - name: Djihane Torchane
+    role: Lead Software Engineer
+    photo: img/djihaneee.webp
+    bio: Quantum AI researcher <br> ESI
+    protect_photo: true
   - name: Okba Bekhelifi
     role: Lead BCI Engineer
     photo: img/okba.webp
@@ -15,20 +20,5 @@ members:
   - name: Sara Hanouti
     role: Finance Lead
     photo: img/Sara.webp
-    bio: EM Lyon Business School<br>Ex EY France
-    protect_photo: false
-  - name: Djihane Torchane
-    role: Full-Stack and AI Engineer
-    photo: img/djihaneee.webp
-    bio: State Engineer in Computer Science <br> Quantum AI researcher
-    protect_photo: true
-  - name: Ilyes Bouchada
-    role: Full-Stack Engineer
-    photo: img/Ilyes.webp
-    bio: Specialising in virtual reality (VR) and artificial intelligence<br> Based in Tokyo, Japan
-    protect_photo: false
-  - name: Nada Nouha Aderghal
-    role: Embedded Systems · BCI
-    photo: img/Nada.webp
-    bio: Brain-Computer Interface researcher
+    bio: Ex EY France<br>EM Lyon Business School
     protect_photo: false
