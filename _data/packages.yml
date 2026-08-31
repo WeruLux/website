@@ -1,17 +1,17 @@
 eyebrow: Packages
 title: Three Ways to <em>Fly Well</em>
-intro: Every plan uses the same core circadian engine. You simply choose how much data your body shares.
+intro: Every plan uses the same core circadian engine. You simply choose how much data your body shares
 items:
   - name: Essentials
     image: img/packages/essentials.webp
     icon: phone
     hardware: No hardware
     hardware_note: Itinerary and daily check-ins
-    who: No new gadgets. Just a smarter plan for the devices you already have.
+    who: No new gadgets required. Just a smarter plan for your global travel
     features:
-      - A personalized light, sleep and caffeine plan for every flight
-      - Built from your itinerary, your chronotype and how you answer each day
-      - Works on any phone, with nothing to wear
+      - A personalized light, sleep, and caffeine plan for every flight
+      - Shaped by your schedule, your chronotype, and your daily check-ins
+      - Any phone. No wearables. Instant setup.
     price: ''
     price_note: ''
     badge: ''
@@ -21,12 +21,12 @@ items:
   - name: Standard
     image: img/packages/standard.webp
     icon: watch
-    hardware: The watch you already own
-    hardware_note: Apple Watch · Whoop · Garmin
-    who: Frequent travellers who already track their sleep
+    hardware: The wearables you already use
+    hardware_note: Apple Watch · Whoop · Garmin · Oura Ring
+    who: Built for frequent travelers who already track their sleep and biometrics
     features:
       - Everything in Essentials
-      - Reads sleep, heart-rate variability and activity from your wearable
+      - Reads sleep, heart-rate variability, and activity from your wearable
       - Plans adapt to how you actually slept, not how you meant to
       - Nothing new to buy, nothing extra to carry
     price: ''
