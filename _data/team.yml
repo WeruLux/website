@@ -1,39 +1,34 @@
-# Team members, rendered in order (3 per row on desktop).
-# `photo` is a path under /img. `bio` supports HTML line breaks via the | block.
 eyebrow: Our Team
 title: Built by <em>Scientists,</em><br>Engineers, & Dreamers
 advisors_label: Scientific & Strategic Advisors
 members:
-  - name: Louisa Uchikoshi
+  - name: Louisa Makoudi Uchikoshi
     role: Co-Founder & CEO
     photo: img/Louisa.webp
-    bio: >-
-      Paris-Saclay University · Waseda University, Japan<br>Published researcher
-      (Technological Forecasting and Social Change)
+    bio: Innovation Management & Strategy | Ex-EDF R&D · Elsevier Q1 Author <br> Waseda University · Paris-Saclay University · HEC Alger
+    protect_photo: false
   - name: Okba Bekhelifi
     role: Lead BCI Engineer
     photo: img/okba.webp
-    bio: >-
-      PhD in Intelligent Systems <br> Brain-Computer Interface researcher
+    bio: PhD in Intelligent Systems <br> Brain-Computer Interface researcher
+    protect_photo: false
   - name: Sara Hanouti
     role: Finance Lead
     photo: img/Sara.webp
-    bio: >-
-      EM Lyon Business School<br>Ex EY France
+    bio: EM Lyon Business School<br>Ex EY France
+    protect_photo: false
   - name: Djihane Torchane
     role: Full-Stack and AI Engineer
     photo: img/djihaneee.webp
-    bio: >-
-      State Engineer in Computer Science <br> Quantum AI researcher
+    bio: State Engineer in Computer Science <br> Quantum AI researcher
     protect_photo: true
   - name: Ilyes Bouchada
     role: Full-Stack Engineer
     photo: img/Ilyes.webp
-    bio: >-
-      Specialising in virtual reality (VR) and artificial intelligence<br>
-      Based in Tokyo, Japan
+    bio: Specialising in virtual reality (VR) and artificial intelligence<br> Based in Tokyo, Japan
+    protect_photo: false
   - name: Nada Nouha Aderghal
     role: Embedded Systems · BCI
     photo: img/Nada.webp
-    bio: >-
-      Brain-Computer Interface researcher
+    bio: Brain-Computer Interface researcher
+    protect_photo: false
